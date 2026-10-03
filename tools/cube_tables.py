@@ -205,12 +205,14 @@ def run_ripes_regs(ripes_exe, src, reginit_pairs, reg_names, timeout_ms):
     """General form of run_ripes: reginit_pairs is a list of (index, value)
     for --reginit, reg_names is the list of "xN" register names to read
     back. Returns (dict of name->value, error) with error None on success."""
-    reginit = ",".join(f"{idx}={val}" for idx, val in reginit_pairs)
     cmd = [
         ripes_exe, "--mode", "cli", "--src", src, "-t", "asm",
         "--proc", "RV32_SS", "--timeout", str(timeout_ms),
-        "--reginit", reginit, "--regs", "--json",
     ]
+    if reginit_pairs:
+        reginit = ",".join(f"{idx}={val}" for idx, val in reginit_pairs)
+        cmd += ["--reginit", reginit]
+    cmd += ["--regs", "--json"]
     result = subprocess.run(cmd, capture_output=True, text=True)
     if result.returncode != 0:
         return None, result.stdout + result.stderr
