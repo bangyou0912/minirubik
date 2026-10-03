@@ -10,13 +10,20 @@ Calling convention the student's code must follow (see
 quarter_turn_harness.s): a0=face, a1=packed p (3 bits x 7), a2=packed o
 (2 bits x 7); returns a0=new packed p, a1=new packed o.
 
+Ripes's assembler has no `.include`, so the harness (the `main:` driver and
+exit syscall) and the student's own solution file are concatenated into a
+temp file before each run, rather than asking the student to paste their
+code into the harness file.
+
 Usage (run with Windows Python, since Ripes.exe is a native Windows app):
-    python tools\\test_quarter_turn.py --src path\\to\\your_quarter_turn.s
+    python tools\\test_quarter_turn.py --solution rv32i\\cube_ops.s
 """
 import argparse
 import json
+import os
 import subprocess
 import sys
+import tempfile
 
 # Transcribed from solver.c -- the physical cube, not a design choice.
 SOURCE = (
@@ -98,39 +105,64 @@ def run_ripes(ripes_exe, src, face, p, o, timeout_ms):
     return (regs.get("x10"), regs.get("x11")), None
 
 
+def merge_harness_and_solution(harness_path, solution_path):
+    """Ripes's assembler has no `.include`; concatenate the harness (the
+    main: driver + exit syscall, no cube logic) with the student's own
+    solution file into one temp .s file for Ripes to assemble."""
+    harness = open(harness_path, encoding="utf-8").read()
+    solution = open(solution_path, encoding="utf-8").read()
+    fd, path = tempfile.mkstemp(suffix=".s", prefix="quarter_turn_merged_")
+    with os.fdopen(fd, "w", encoding="utf-8") as f:
+        f.write(harness)
+        f.write("\n\n# ---- merged in from " + solution_path + " ----\n")
+        f.write(solution)
+    return path
+
+
 def main():
+    here = os.path.dirname(os.path.abspath(__file__))
     ap = argparse.ArgumentParser()
-    ap.add_argument("--src", required=True, help="path to your .s file")
+    ap.add_argument(
+        "--solution", required=True,
+        help="path to your own .s file, e.g. rv32i/cube_ops.s")
+    ap.add_argument(
+        "--harness", default=os.path.join(here, "quarter_turn_harness.s"),
+        help="path to the harness file (default: tools/quarter_turn_harness.s)")
     ap.add_argument(
         "--ripes", default=r"%USERPROFILE%\Apps\Ripes\Ripes.exe".replace(
-            "%USERPROFILE%", __import__("os").environ.get("USERPROFILE", "")))
+            "%USERPROFILE%", os.environ.get("USERPROFILE", "")))
     ap.add_argument("--timeout", type=int, default=5000)
     args = ap.parse_args()
 
-    total = 0
-    failed = 0
-    for p, o in TEST_STATES:
-        for face in range(3):
-            total += 1
-            exp_p, exp_o = expected_quarter_turn(face, p, o)
-            exp = (pack_p(exp_p), pack_o(exp_o))
-            got, err = run_ripes(args.ripes, args.src, face, p, o, args.timeout)
-            label = f"face={FACE_NAMES[face]} p={p} o={o}"
-            if err:
-                print(f"FAIL  {label}\n      Ripes error: {err}")
-                failed += 1
-                continue
-            if got != exp:
-                got_p = unpack_p(got[0]) if got[0] is not None else None
-                got_o = unpack_o(got[1]) if got[1] is not None else None
-                print(f"FAIL  {label}")
-                print(f"      expected p={exp_p} o={exp_o}")
-                print(f"      got      p={got_p} o={got_o}")
-                failed += 1
-            else:
-                print(f"ok    {label}")
-    print(f"\n{total - failed}/{total} passed")
-    sys.exit(1 if failed else 0)
+    merged_path = merge_harness_and_solution(args.harness, args.solution)
+    try:
+        total = 0
+        failed = 0
+        for p, o in TEST_STATES:
+            for face in range(3):
+                total += 1
+                exp_p, exp_o = expected_quarter_turn(face, p, o)
+                exp = (pack_p(exp_p), pack_o(exp_o))
+                got, err = run_ripes(
+                    args.ripes, merged_path, face, p, o, args.timeout)
+                label = f"face={FACE_NAMES[face]} p={p} o={o}"
+                if err:
+                    print(f"FAIL  {label}\n      Ripes error: {err}")
+                    failed += 1
+                    continue
+                if got != exp:
+                    got_p = unpack_p(got[0]) if got[0] is not None else None
+                    got_o = unpack_o(got[1]) if got[1] is not None else None
+                    print(f"FAIL  {label}")
+                    print(f"      expected p={exp_p} o={exp_o}")
+                    print(f"      got      p={got_p} o={got_o}")
+                    failed += 1
+                else:
+                    print(f"ok    {label}")
+        print(f"\n{total - failed}/{total} passed")
+        sys.exit(1 if failed else 0)
+    finally:
+        os.remove(merged_path)
 
 
 if __name__ == "__main__":
