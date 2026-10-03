@@ -1,22 +1,21 @@
 #!/usr/bin/env python3
-"""Checks a hand-written RV32I `quarter_turn` subroutine against solver.c's
-own source[]/twist[] tables (the physical cube's fixed definition), run
-through Ripes's actual CLI simulator. Drives Ripes and compares results;
-contains no cube-turn logic of its own -- see tools/cube_tables.py.
+"""Checks a hand-written RV32I `apply_move` against solver.c's own move
+encoding (move // 3 = face, move % 3 + 1 = quarter-turn count) built on
+top of the already-verified quarter_turn tables. See tools/cube_tables.py
+for what's transcribed vs. generic test infrastructure.
 
-Calling convention (see quarter_turn_harness.s): a0=face, a1=packed p
-(3 bits x 7), a2=packed o (2 bits x 7); returns a0=new packed p,
-a1=new packed o.
+Calling convention (see apply_move_harness.s): a0=move 0..8, a1=packed p,
+a2=packed o; returns a0=new packed p, a1=new packed o.
 
 Usage (run with Windows Python, since Ripes.exe is a native Windows app):
-    python tools\\test_quarter_turn.py --solution rv32i\\cube_ops.s
+    python tools\\test_apply_move.py --solution rv32i\\cube_ops.s
 """
 import argparse
 import os
 import sys
 
 from cube_tables import (
-    FACE_NAMES, TEST_STATES, default_ripes_path, expected_quarter_turn,
+    MOVE_NAMES, TEST_STATES, default_ripes_path, expected_apply_move,
     merge_harness_and_solution, pack_o, pack_p, run_ripes, unpack_o, unpack_p,
 )
 
@@ -28,7 +27,7 @@ def main():
         "--solution", required=True,
         help="path to your own .s file, e.g. rv32i/cube_ops.s")
     ap.add_argument(
-        "--harness", default=os.path.join(here, "quarter_turn_harness.s"))
+        "--harness", default=os.path.join(here, "apply_move_harness.s"))
     ap.add_argument("--ripes", default=default_ripes_path())
     ap.add_argument("--timeout", type=int, default=5000)
     args = ap.parse_args()
@@ -38,14 +37,14 @@ def main():
         total = 0
         failed = 0
         for p, o in TEST_STATES:
-            for face in range(3):
+            for move in range(9):
                 total += 1
-                exp_p, exp_o = expected_quarter_turn(face, p, o)
+                exp_p, exp_o = expected_apply_move(move, p, o)
                 exp = (pack_p(exp_p), pack_o(exp_o))
                 got, err = run_ripes(
-                    args.ripes, merged_path, face, pack_p(p), pack_o(o),
+                    args.ripes, merged_path, move, pack_p(p), pack_o(o),
                     args.timeout)
-                label = f"face={FACE_NAMES[face]} p={p} o={o}"
+                label = f"move={MOVE_NAMES[move]:<2} p={p} o={o}"
                 if err:
                     print(f"FAIL  {label}\n      Ripes error: {err}")
                     failed += 1
