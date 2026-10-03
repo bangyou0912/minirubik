@@ -64,31 +64,115 @@ def unpack_o(v):
     return [(v >> (2 * i)) & 0x3 for i in range(7)]
 
 
-# tests/solutions.txt vectors, converted to solver.c's 0-6 internal labels
-# (vector digit - 1), plus the solved state.
-TEST_STATES = [
-    ([0, 1, 2, 3, 4, 5, 6], [0, 0, 0, 0, 0, 0, 0]),  # solved
-    ([5, 1, 2, 3, 4, 0, 6], [0, 2, 0, 2, 2, 0, 0]),  # 62345713133111
-    ([1, 2, 0, 4, 5, 6, 3], [0, 1, 0, 1, 1, 0, 2]),  # 24316572122213
-    ([1, 4, 6, 2, 3, 5, 0], [1, 1, 1, 0, 0, 0, 0]),  # 25713642221111
-    ([1, 3, 4, 6, 5, 2, 0], [0, 1, 0, 2, 2, 2, 2]),  # 24513763133333
-    ([3, 6, 4, 1, 5, 0, 2], [0, 2, 1, 0, 2, 1, 0]),  # 43752611332133
-    ([1, 4, 0, 5, 2, 6, 3], [1, 0, 2, 2, 1, 1, 0]),  # 25416373331111
-    ([1, 0, 2, 3, 4, 5, 6], [0, 0, 0, 0, 0, 0, 0]),  # 21345671111111
+# tests/solutions.txt vectors (parsed programmatically from the 14-char
+# strings below, not hand-transcribed -- an earlier hand-transcribed
+# version of this table had several digits swapped, which quarter_turn
+# and apply_move's self-consistency tests couldn't catch since both sides
+# of those tests applied the same transform to the same, possibly wrong,
+# state; it only surfaced once a test compared against the vector's
+# independently known optimal length). KNOWN_OPTIMAL_LENGTHS is the move
+# count from that same file (independently cross-checked against
+# tools/reference_model.py's from-scratch BFS earlier).
+TEST_VECTORS = [
+    "12345671111111",
+    "62345713133111",
+    "24316572122213",
+    "25713642221111",
+    "24513763133333",
+    "43752611332133",
+    "25416373331111",
+    "21345671111111",
 ]
+KNOWN_OPTIMAL_LENGTHS = [0, 8, 8, 8, 9, 9, 10, 11]
+
+
+def _parse_vector(vec):
+    p = [int(c) - 1 for c in vec[:7]]
+    o = [int(c) - 1 for c in vec[7:]]
+    return p, o
+
+
+TEST_STATES = [_parse_vector(v) for v in TEST_VECTORS]
+
+# pos_to_new_pos[face][j] = the position a cubie currently at position j
+# moves to after one quarter turn of `face` -- the functional inverse of
+# SOURCE[face] (SOURCE[face][i] = the position the cubie at destination i
+# came FROM). Shared by generate_search_tables.py and any IDA*-coordinate
+# test tooling.
+POS_TO_NEW_POS = []
+for _face in range(3):
+    _inv = [0] * 7
+    for _i in range(7):
+        _inv[SOURCE[_face][_i]] = _i
+    POS_TO_NEW_POS.append(_inv)
+
+JOINT_A_CUBIES = (0, 1, 2)
+JOINT_B_CUBIES = (3, 4, 5)
+
+
+def rank_full_perm(p):
+    """Lehmer code, identical algorithm to solver.c's rank_state (the
+    permutation half only): identity (0,1,2,3,4,5,6) ranks to 0."""
+    rank = 0
+    for i in range(7):
+        smaller = sum(1 for j in range(i + 1, 7) if p[j] < p[i])
+        rank = rank * (7 - i) + smaller
+    return rank
+
+
+def rank_k_from_n(choices, n):
+    """Falling-factorial rank of an ordered selection of len(choices)
+    distinct values from range(n), generalizing solver.c's permutation
+    ranking technique to picking k of n instead of all n."""
+    avail = list(range(n))
+    k = len(choices)
+    rank = 0
+    for idx in range(k):
+        c = avail.index(choices[idx])
+        weight = 1
+        for r in range(k - idx - 1):
+            weight *= (n - idx - 1 - r)
+        rank += c * weight
+        avail.pop(c)
+    return rank
+
+
+def state_to_ida_coords(p, o):
+    """Converts a solver.c-style state (p[0..6], o[0..6], 0-6 cubie
+    labels) into the three IDA* search coordinates: full permutation
+    rank, and the two joint-pattern ranks for cubies {0,1,2}/{3,4,5}.
+    position_of[c] = the position holding cubie c; a tracked cubie's
+    orientation is o at THAT position, since orientation travels with
+    the physical cubie, not with the position."""
+    perm_coord = rank_full_perm(p)
+    position_of = {cubie: pos for pos, cubie in enumerate(p)}
+
+    def joint_coord(cubies):
+        positions = tuple(position_of[c] for c in cubies)
+        orientations = tuple(o[position_of[c]] for c in cubies)
+        return rank_k_from_n(positions, 7) * 27 + (
+            orientations[0] * 9 + orientations[1] * 3 + orientations[2])
+
+    return perm_coord, joint_coord(JOINT_A_CUBIES), joint_coord(JOINT_B_CUBIES)
 
 
 def merge_harness_and_solution(harness_path, solution_path):
     """Ripes's assembler has no .include; concatenate the harness (a
     main: driver + exit syscall, no cube logic) with the student's own
     solution file into one temp .s file for Ripes to assemble."""
-    harness = open(harness_path, encoding="utf-8").read()
-    solution = open(solution_path, encoding="utf-8").read()
+    return merge_many(harness_path, [solution_path])
+
+
+def merge_many(harness_path, solution_paths):
+    """Same as merge_harness_and_solution, for a harness that depends on
+    more than one of the student's own files (e.g. ida_search.s plus its
+    search_tables.s data)."""
     fd, path = tempfile.mkstemp(suffix=".s", prefix="cube_merged_")
     with os.fdopen(fd, "w", encoding="utf-8") as f:
-        f.write(harness)
-        f.write("\n\n# ---- merged in from " + solution_path + " ----\n")
-        f.write(solution)
+        f.write(open(harness_path, encoding="utf-8").read())
+        for sp in solution_paths:
+            f.write("\n\n# ---- merged in from " + sp + " ----\n")
+            f.write(open(sp, encoding="utf-8").read())
     return path
 
 
@@ -115,6 +199,30 @@ def run_ripes(ripes_exe, src, x10, x11, x12, timeout_ms):
         return None, f"non-JSON output:\n{result.stdout}\n{result.stderr}"
     regs = data.get("registers", {})
     return (regs.get("x10"), regs.get("x11")), None
+
+
+def run_ripes_regs(ripes_exe, src, reginit_pairs, reg_names, timeout_ms):
+    """General form of run_ripes: reginit_pairs is a list of (index, value)
+    for --reginit, reg_names is the list of "xN" register names to read
+    back. Returns (dict of name->value, error) with error None on success."""
+    reginit = ",".join(f"{idx}={val}" for idx, val in reginit_pairs)
+    cmd = [
+        ripes_exe, "--mode", "cli", "--src", src, "-t", "asm",
+        "--proc", "RV32_SS", "--timeout", str(timeout_ms),
+        "--reginit", reginit, "--regs", "--json",
+    ]
+    result = subprocess.run(cmd, capture_output=True, text=True)
+    if result.returncode != 0:
+        return None, result.stdout + result.stderr
+    start = result.stdout.find("{")
+    if start < 0:
+        return None, f"no JSON object in output:\n{result.stdout}\n{result.stderr}"
+    try:
+        data = json.loads(result.stdout[start:])
+    except json.JSONDecodeError:
+        return None, f"non-JSON output:\n{result.stdout}\n{result.stderr}"
+    regs = data.get("registers", {})
+    return {name: regs.get(name) for name in reg_names}, None
 
 
 def default_ripes_path():

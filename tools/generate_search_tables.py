@@ -30,50 +30,14 @@ import sys
 from collections import deque
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from cube_tables import SOURCE, TWIST  # noqa: E402
+from cube_tables import (  # noqa: E402
+    POS_TO_NEW_POS, SOURCE, TWIST, rank_full_perm, rank_k_from_n,
+)
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT_PATH = os.path.join(REPO_ROOT, "rv32i", "search_tables.s")
 
 FACE_NAMES = ("R", "B", "D")
-
-# pos_to_new_pos[face][j] = the position a cubie currently at position j
-# moves to after one quarter turn of `face`. Derived as the functional
-# inverse of SOURCE[face] (SOURCE[face][i] = the position the cubie at
-# destination i came FROM).
-POS_TO_NEW_POS = []
-for face in range(3):
-    inv = [0] * 7
-    for i in range(7):
-        inv[SOURCE[face][i]] = i
-    POS_TO_NEW_POS.append(inv)
-
-
-def rank_full_perm(p):
-    """Lehmer code, identical algorithm to solver.c's rank_state (the
-    permutation half only): identity (0,1,2,3,4,5,6) ranks to 0."""
-    rank = 0
-    for i in range(7):
-        smaller = sum(1 for j in range(i + 1, 7) if p[j] < p[i])
-        rank = rank * (7 - i) + smaller
-    return rank
-
-
-def rank_k_from_n(choices, n):
-    """Falling-factorial rank of an ordered selection of len(choices)
-    distinct values from range(n), generalizing solver.c's permutation
-    ranking technique to picking k of n instead of all n."""
-    avail = list(range(n))
-    k = len(choices)
-    rank = 0
-    for idx in range(k):
-        c = avail.index(choices[idx])
-        weight = 1
-        for r in range(k - idx - 1):
-            weight *= (n - idx - 1 - r)
-        rank += c * weight
-        avail.pop(c)
-    return rank
 
 
 # ---------------------------------------------------------------- full permutation
