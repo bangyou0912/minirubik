@@ -1,5 +1,6 @@
 .text
 .globl quarter_turn
+.globl apply_move
 
 # a0 is the face index where 0 is R, 1 is B, and 2 is D
 # a1 is packed permutation data with seven 3-bit fields
@@ -71,4 +72,46 @@ quarter_turn_mod_done:
 
     mv a0, t5
     mv a1, t6
+    ret
+
+# a0 is the move index from 0 through 8
+# a1 is packed permutation data
+# a2 is packed orientation data
+# Returns the new packed permutation in a0 and orientation in a1
+apply_move:
+    addi sp, sp, -16
+    sw ra, 12(sp)
+    sw a2, 8(sp)
+
+    # Decode face and turn count by repeated subtraction
+    li t0, 0
+apply_move_decode:
+    sltiu t1, a0, 3
+    bnez t1, apply_move_decoded
+    addi a0, a0, -3
+    addi t0, t0, 1
+    j apply_move_decode
+
+apply_move_decoded:
+    addi a0, a0, 1
+    sw a0, 4(sp)
+    sw t0, 0(sp)
+
+apply_move_loop:
+    lw a0, 0(sp)
+    lw a2, 8(sp)
+    jal ra, quarter_turn
+
+    # Feed this result into the next quarter turn
+    sw a1, 8(sp)
+    mv a1, a0
+    lw t0, 4(sp)
+    addi t0, t0, -1
+    sw t0, 4(sp)
+    bnez t0, apply_move_loop
+
+    mv a0, a1
+    lw a1, 8(sp)
+    lw ra, 12(sp)
+    addi sp, sp, 16
     ret
