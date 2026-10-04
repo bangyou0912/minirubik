@@ -60,6 +60,9 @@ def main():
     here = os.path.dirname(os.path.abspath(__file__))
     ap = argparse.ArgumentParser()
     ap.add_argument("--vector", default="21345671111111")
+    ap.add_argument(
+        "--expect-length", type=int, default=None,
+        help="known optimal length; the run fails if the returned length differs")
     ap.add_argument("--parser", required=True)
     ap.add_argument("--ida", required=True)
     ap.add_argument("--tables", required=True)
@@ -103,8 +106,11 @@ def main():
         print(f"  length={length}  final_coords={final}  "
               f"iret={iret}  cycles={cycles}  cpi={cpi}")
         print(f"  runinfo: {runinfo}")
-        if length != 11 and args.vector == "21345671111111":
-            print(f"  WARNING: expected length 11 for {args.vector}")
+        expected = args.expect_length
+        if expected is None and args.vector == "21345671111111":
+            expected = 11
+        if expected is not None and length != expected:
+            print(f"  WARNING: expected length {expected} for {args.vector}")
             ok = False
         if final != GOAL:
             print(f"  WARNING: replay did not reach goal {GOAL}")
