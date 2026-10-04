@@ -59,16 +59,14 @@ ida_root_max_b_done:
 
 ida_begin_iteration:
     li s9, 0
+    mv s11, s6
     sb zero, 6(s6)
     li t0, 3
     sb t0, 7(s6)
 
 ida_search_loop:
-    # Compute the current 12-byte frame address
-    slli t0, s9, 3
-    slli t1, s9, 2
-    add t0, t0, t1
-    add t0, s6, t0
+    # s11 always points at the current 12-byte frame
+    mv t0, s11
 
     lbu a3, 6(t0)
     li t1, 9
@@ -148,10 +146,7 @@ ida_child_max_b_done:
     # Record the path move and push the child frame
     add t0, s7, s9
     sb a3, 0(t0)
-    slli t0, a6, 3
-    slli t1, a6, 2
-    add t0, t0, t1
-    add t0, s6, t0
+    addi t0, s11, 12
     sh a0, 0(t0)
     sh a1, 2(t0)
     sh a2, 4(t0)
@@ -159,11 +154,13 @@ ida_child_max_b_done:
     sb a4, 7(t0)
     sb a6, 8(t0)
     mv s9, a6
+    mv s11, t0
     j ida_search_loop
 
 ida_frame_exhausted:
     beqz s9, ida_iteration_exhausted
     addi s9, s9, -1
+    addi s11, s11, -12
     j ida_search_loop
 
 ida_iteration_exhausted:
