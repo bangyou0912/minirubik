@@ -7,6 +7,10 @@
 #include <limits.h>
 #include <time.h>
 
+#ifdef CHECK_C_SEARCH
+#include "../rv32i/ida_reference.c"
+#endif
+
 enum { PERM_EDGES = 5040 * 3, JOINT_EDGES = 5670 * 3 };
 
 static uint16_t perm_edges[PERM_EDGES];
@@ -213,6 +217,35 @@ int main(int argc, char **argv)
                 die("H4 packed accessor mismatch");
             ++packed_checked;
         }
+#ifdef CHECK_C_SEARCH
+        cube_u8 moves[11];
+        int length = ida_solve_c((cube_u16)perm, (cube_u16)a,
+                                 (cube_u16)b, moves);
+        if (length != distance[rank]) {
+            fprintf(stderr, "H3 length mismatch at rank %u: got %d, expected %u\n",
+                    rank, length, distance[rank]);
+            return EXIT_FAILURE;
+        }
+        uint32_t rp = perm, ra = a, rb = b;
+        for (int step = 0; step < length; ++step) {
+            unsigned move = moves[step];
+            if (move >= 9)
+                die("H3 returned an invalid move byte");
+            unsigned face = move / 3;
+            unsigned turns = move % 3 + 1;
+            for (unsigned turn = 0; turn < turns; ++turn) {
+                rp = perm_edges[3 * rp + face];
+                ra = a_edges[3 * ra + face];
+                rb = b_edges[3 * rb + face];
+            }
+        }
+        if (rp != 0 || ra != 0 || rb != 2916) {
+            fprintf(stderr, "H3 path failed replay at rank %u\n", rank);
+            return EXIT_FAILURE;
+        }
+        if ((rank + 1) % 500000 == 0)
+            fprintf(stderr, "H3 progress: %u/%u states\n", rank + 1, STATES);
+#endif
     }
     if (diameter != 11)
         die("oracle diameter is not 11");
@@ -221,7 +254,11 @@ int main(int argc, char **argv)
            packed_checked);
     printf("Oracle diameter=%u, distance-11 states=%u, CPU time=%.3f s\n",
            diameter, histogram[11], (double)(clock() - started) / CLOCKS_PER_SEC);
+#ifdef CHECK_C_SEARCH
+    printf("H3: %u/%u states return exact lengths and replay to goal\n", STATES, STATES);
+#else
     puts("H3: NOT RUN: final student C search implementation is not present");
+#endif
     free(toward);
     free(distance);
     return EXIT_SUCCESS;
