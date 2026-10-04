@@ -5,6 +5,24 @@ representation, search design, or RV32I code — those stay in `solver.c`,
 future RV32I sources, and the HackMD note, written and argued by the
 repository owner per the course's AI-use disclosure (§4.1).
 
+## verify_host_gates.c
+
+Host-only checks for H1, H2, and the packed-field portion of H4. It includes
+the unmodified `solver.c` in one translation unit so the baseline BFS table
+is the exact-distance oracle, then checks all 3,674,160 full-state ranks
+against the generated search tables. The generator itself separately checks
+that each projection BFS covered its whole coordinate space.
+
+```sh
+gcc -O3 -std=c99 -I. tools/verify_host_gates.c -o /tmp/verify_host_gates
+/tmp/verify_host_gates rv32i/search_tables.s
+```
+
+This is AI-assisted verification tooling, not a student measurement or the
+final C search implementation. The owner must run and record the results
+personally before putting them in the HackMD note. H3 remains open until a
+student-written final C search implementation can be tested exhaustively.
+
 ## reference_model.py
 
 A from-scratch Python BFS over the 2x2x2 cube's quotient group, used only to
