@@ -28,3 +28,30 @@ This checks that the *given* vectors are optimal; it does not yet check all
 3,674,160 states against `solver.c`'s own table (that needs an instrumented
 build of `solver.c` to dump `toward_solved[]`, which touches the student's
 own code and is left for the owner to add if deeper H3 coverage is wanted).
+
+## LED Matrix renderer
+
+`test_led_matrix.py` checks the 24 facelet colors for all eight known vectors,
+then runs the real clear, draw, delay, and move loop for all nine moves. The
+tests use ordinary sparse guest RAM in place of the GUI-only MMIO peripheral.
+
+```sh
+python tools/test_led_matrix.py
+```
+
+`build_rv32i_program.py` concatenates the maintained RV32I modules into the
+single source file Ripes expects. The CLI build omits all renderer code and
+LED symbols. The GUI build includes them.
+
+```sh
+python tools/build_rv32i_program.py \
+    --output tools/_merged_minirubik_cli.s
+python tools/build_rv32i_program.py --render \
+    --output tools/_merged_minirubik_gui.s
+```
+
+Before loading the GUI build, add an LED Matrix in the Ripes I/O tab and set
+Width to 35 and Height to 25. The installed Ripes assembler rejects `.if`
+and `.endif`, despite those directives appearing as an example on the
+assignment page, so the build script implements the renderer switch before
+assembly. Both builds still come from the same maintained source modules.
