@@ -176,13 +176,18 @@ def merge_many(harness_path, solution_paths):
     return path
 
 
-def run_ripes(ripes_exe, src, x10, x11, x12, timeout_ms):
-    """Sets x10/x11/x12 via --reginit, runs src on RV32_SS, and returns
-    the resulting (x10, x11) pair read back via --regs --json."""
-    reginit = f"10={x10},11={x11},12={x12}"
+DEFAULT_PROC = "RV32_ISS"
+
+
+def run_ripes(ripes_exe, src, x10, x11, x12, timeout_ms, proc=DEFAULT_PROC):
+    """Sets x10/x11/x12 via --reginit, runs src on `proc` (RV32_ISS by
+    default -- the model the assignment actually names; only the
+    continuous/master Ripes build has it, not the v2.2.6 release), and
+    returns the resulting (x10, x11) pair read back via --regs --json."""
+    reginit = f"gpr:10={x10},11={x11},12={x12}"
     cmd = [
         ripes_exe, "--mode", "cli", "--src", src, "-t", "asm",
-        "--proc", "RV32_SS", "--timeout", str(timeout_ms),
+        "--proc", proc, "--timeout", str(timeout_ms),
         "--reginit", reginit, "--regs", "--json",
     ]
     result = subprocess.run(cmd, capture_output=True, text=True)
@@ -201,16 +206,17 @@ def run_ripes(ripes_exe, src, x10, x11, x12, timeout_ms):
     return (regs.get("x10"), regs.get("x11")), None
 
 
-def run_ripes_regs(ripes_exe, src, reginit_pairs, reg_names, timeout_ms):
+def run_ripes_regs(ripes_exe, src, reginit_pairs, reg_names, timeout_ms,
+                    proc=DEFAULT_PROC):
     """General form of run_ripes: reginit_pairs is a list of (index, value)
     for --reginit, reg_names is the list of "xN" register names to read
     back. Returns (dict of name->value, error) with error None on success."""
     cmd = [
         ripes_exe, "--mode", "cli", "--src", src, "-t", "asm",
-        "--proc", "RV32_SS", "--timeout", str(timeout_ms),
+        "--proc", proc, "--timeout", str(timeout_ms),
     ]
     if reginit_pairs:
-        reginit = ",".join(f"{idx}={val}" for idx, val in reginit_pairs)
+        reginit = "gpr:" + ",".join(f"{idx}={val}" for idx, val in reginit_pairs)
         cmd += ["--reginit", reginit]
     cmd += ["--regs", "--json"]
     result = subprocess.run(cmd, capture_output=True, text=True)
@@ -228,5 +234,8 @@ def run_ripes_regs(ripes_exe, src, reginit_pairs, reg_names, timeout_ms):
 
 
 def default_ripes_path():
+    """Points at the continuous/master build, not the v2.2.6 release --
+    RV32_ISS (the model the assignment names) only exists there."""
     return os.path.join(
-        os.environ.get("USERPROFILE", ""), "Apps", "Ripes", "Ripes.exe")
+        os.environ.get("USERPROFILE", ""), "Apps", "Ripes-continuous",
+        "Ripes.exe")
