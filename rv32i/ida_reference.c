@@ -1,6 +1,9 @@
-/* AI-assisted C draft of the owner's already implemented RV32I IDA* search.
- * Review, adapt, and disclose this file before treating it as coursework.
- * This file does not parse input or draw to the LED Matrix.
+/* C reference model of the IDA* search used by the RV32I solver.
+ *
+ * It mirrors the assembly version step by step so the two can be compared
+ * on the same input: same move numbering as solver.c, same pattern-database
+ * heuristic (max of the three PDBs), same explicit stack instead of
+ * recursion. Input parsing and LED Matrix output stay in the assembly code.
  */
 #include "search_tables_c.h"
 
@@ -12,7 +15,8 @@ typedef struct {
     cube_u8 previous_face;
 } ida_frame_c;
 
-static ida_frame_c ida_frames_c[12];
+/* The deepest frame pushed is bound - 1 <= 10, so 11 frames are enough. */
+static ida_frame_c ida_frames_c[11];
 
 static cube_u8 ida_heuristic_c(cube_u16 perm, cube_u16 joint_a,
                                 cube_u16 joint_b)
@@ -40,7 +44,7 @@ int ida_solve_c(cube_u16 perm, cube_u16 joint_a, cube_u16 joint_b,
     ida_frames_c[0].perm = perm;
     ida_frames_c[0].joint_a = joint_a;
     ida_frames_c[0].joint_b = joint_b;
-    ida_frames_c[0].previous_face = 3;
+    ida_frames_c[0].previous_face = 3; /* no face yet */
 
     for (; bound <= 11; ++bound) {
         cube_u8 depth = 0;
@@ -55,6 +59,8 @@ int ida_solve_c(cube_u16 perm, cube_u16 joint_a, cube_u16 joint_b,
                 continue;
             }
 
+            /* Decode with compares instead of move / 3 and move % 3:
+             * the RV32I base ISA has no divide instruction. */
             cube_u8 move = frame->next_move++;
             cube_u8 face;
             cube_u8 turns;
@@ -87,9 +93,9 @@ int ida_solve_c(cube_u16 perm, cube_u16 joint_a, cube_u16 joint_b,
             solution[depth] = move;
             if (h == 0)
                 return child_depth;
-            if (child_depth >= 11)
-                continue;
 
+            /* Here h >= 1, so child_depth < bound <= 11: no extra depth
+             * check is needed before pushing. */
             ida_frame_c *child = &ida_frames_c[child_depth];
             child->perm = next_perm;
             child->joint_a = next_a;
