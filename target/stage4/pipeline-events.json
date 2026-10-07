@@ -1,0 +1,225 @@
+{
+  "input": "26471352122222",
+  "model": "RV32_5S",
+  "iret": 2484,
+  "cycles": 3287,
+  "source": "Observed stage occupancy from --pipeline; no GUI wire values captured",
+  "capture_window_cycles": [
+    0,
+    100
+  ],
+  "events": [
+    {
+      "instruction": "lbu x28 0 x5",
+      "first": [
+        {
+          "cycle": 25,
+          "stage": "IF"
+        },
+        {
+          "cycle": 26,
+          "stage": "ID"
+        },
+        {
+          "cycle": 27,
+          "stage": "EX"
+        },
+        {
+          "cycle": 28,
+          "stage": "MEM"
+        },
+        {
+          "cycle": 29,
+          "stage": "WB"
+        },
+        {
+          "cycle": 41,
+          "stage": "IF"
+        },
+        {
+          "cycle": 42,
+          "stage": "ID"
+        },
+        {
+          "cycle": 43,
+          "stage": "EX"
+        },
+        {
+          "cycle": 44,
+          "stage": "MEM"
+        },
+        {
+          "cycle": 45,
+          "stage": "WB"
+        },
+        {
+          "cycle": 57,
+          "stage": "IF"
+        },
+        {
+          "cycle": 58,
+          "stage": "ID"
+        }
+      ]
+    },
+    {
+      "instruction": "addi x28 x28 -49",
+      "first": [
+        {
+          "cycle": 26,
+          "stage": "IF"
+        },
+        {
+          "cycle": 27,
+          "stage": "ID"
+        },
+        {
+          "cycle": 28,
+          "stage": "-"
+        },
+        {
+          "cycle": 29,
+          "stage": "EX"
+        },
+        {
+          "cycle": 30,
+          "stage": "MEM"
+        },
+        {
+          "cycle": 31,
+          "stage": "WB"
+        },
+        {
+          "cycle": 42,
+          "stage": "IF"
+        },
+        {
+          "cycle": 43,
+          "stage": "ID"
+        },
+        {
+          "cycle": 44,
+          "stage": "-"
+        },
+        {
+          "cycle": 45,
+          "stage": "EX"
+        },
+        {
+          "cycle": 46,
+          "stage": "MEM"
+        },
+        {
+          "cycle": 47,
+          "stage": "WB"
+        }
+      ]
+    },
+    {
+      "instruction": "bgeu x28 x31 500",
+      "first": [
+        {
+          "cycle": 27,
+          "stage": "IF"
+        },
+        {
+          "cycle": 28,
+          "stage": "-"
+        },
+        {
+          "cycle": 29,
+          "stage": "ID"
+        },
+        {
+          "cycle": 30,
+          "stage": "EX"
+        },
+        {
+          "cycle": 31,
+          "stage": "MEM"
+        },
+        {
+          "cycle": 32,
+          "stage": "WB"
+        },
+        {
+          "cycle": 43,
+          "stage": "IF"
+        },
+        {
+          "cycle": 44,
+          "stage": "-"
+        },
+        {
+          "cycle": 45,
+          "stage": "ID"
+        },
+        {
+          "cycle": 46,
+          "stage": "EX"
+        },
+        {
+          "cycle": 47,
+          "stage": "MEM"
+        },
+        {
+          "cycle": 48,
+          "stage": "WB"
+        }
+      ]
+    },
+    {
+      "instruction": "sb x28 0 x30",
+      "first": [
+        {
+          "cycle": 35,
+          "stage": "IF"
+        },
+        {
+          "cycle": 36,
+          "stage": "ID"
+        },
+        {
+          "cycle": 37,
+          "stage": "EX"
+        },
+        {
+          "cycle": 38,
+          "stage": "MEM"
+        },
+        {
+          "cycle": 39,
+          "stage": "WB"
+        },
+        {
+          "cycle": 51,
+          "stage": "IF"
+        },
+        {
+          "cycle": 52,
+          "stage": "ID"
+        },
+        {
+          "cycle": 53,
+          "stage": "EX"
+        },
+        {
+          "cycle": 54,
+          "stage": "MEM"
+        },
+        {
+          "cycle": 55,
+          "stage": "WB"
+        },
+        {
+          "cycle": 67,
+          "stage": "IF"
+        },
+        {
+          "cycle": 68,
+          "stage": "ID"
+        }
+      ]
+    }
+  ]
+}

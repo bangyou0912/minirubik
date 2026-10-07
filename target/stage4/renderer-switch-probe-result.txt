@@ -1,0 +1,5 @@
+exit=1
+ERROR: Error during assembly:
+INFO: Unknown directive '.if'
+INFO: Unknown symbol 'LED_MATRIX_0_BASE'
+INFO: Unknown directive '.endif'

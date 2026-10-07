@@ -1,0 +1,4 @@
+PASS: 1323 independent geometric sticker/turn checks
+Fixture 12345671111111: 1 frames, including solved final frame
+Fixture 26471352122222: 4 frames, including solved final frame
+Fixture 21345671111111: 12 frames, including solved final frame

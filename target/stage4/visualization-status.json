@@ -1,0 +1,23 @@
+{
+  "renderer_implemented": true,
+  "geometry_checks": 1323,
+  "target_models": [
+    "RV32_ISS",
+    "RV32_5S"
+  ],
+  "pixel_checked_frames": 34,
+  "pixel_word_comparisons": 29750,
+  "native_RAM_model_tests": 3,
+  "actual_pipeline_trace": {
+    "cycles": 3287,
+    "iret": 2484,
+    "captured_cycles": [
+      0,
+      100
+    ]
+  },
+  "actual_GUI_LED_verified": false,
+  "actual_GUI_wire_signals_verified": false,
+  "GUI_limitation": "Native app control is unavailable in this session; browser tools cannot inspect the Ripes window.",
+  "remaining": "Manual screenshots required: follow visualization.md for real LED and control-signal evidence."
+}

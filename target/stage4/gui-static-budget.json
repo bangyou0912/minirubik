@@ -1,0 +1,17 @@
+{
+  "source": "target/stage4/ripes/solver-gui.s",
+  "source_sha256": "f2b07e8b522b68be678f09d9422cb908a8fe7514bb1d70ae630710b86220d63c",
+  "renderer_included": true,
+  "section_sizes": {
+    ".text": 2200,
+    ".data": 81168
+  },
+  "static_bytes": 81168,
+  "static_KiB": 79.265625,
+  "budget_bytes": 131072,
+  "remaining_bytes": 49904,
+  "LED_related_added_static_bytes": 148,
+  "MMIO_pixel_window_bytes": 3500,
+  "conservative_static_plus_MMIO_bytes": 84668,
+  "device_binding_note": "Peripheral constants bound to test RAM values only for linking; no GUI execution claimed."
+}
