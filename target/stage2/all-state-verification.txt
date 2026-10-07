@@ -1,0 +1,7 @@
+Summary retained from the completed --all execution before a later quick check refreshed verification.txt.
+Command: /tmp/minirubik-stage2-verify --all
+Compiler: GCC 11.4.0, -O3 -std=c99
+All 3674160 states: projection commutation for all nine moves, admissibility, goal equivalence PASS
+Search: 3674160 states have exact length and full-cubie replay PASS
+Distance-11: 2644; basic maximum edges=639792 rank=2437047; joint maximum edges=238434 rank=2437047
+Host CPU seconds 172.499; these are host counts, not Ripes instruction measurements

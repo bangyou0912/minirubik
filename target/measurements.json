@@ -1,0 +1,150 @@
+{
+  "exe": "C:\\Users\\user\\Apps\\Ripes-continuous\\Ripes.exe",
+  "sha256": "bd2ddea8cd6fcf6902cda7366fe99ab6dd0c7fdbbc7efcfdb89ede20acc67f0f",
+  "samples": [
+    {
+      "guest_bytes": 0,
+      "model": "RV32_ISS",
+      "peak_ws": 30687232,
+      "peak_commit": 6340608,
+      "wall_s": 0.15571580012328923,
+      "telemetry": {
+        "# instructions retired": 7,
+        "cycles": 7,
+        "execution time (ms)": 1
+      }
+    },
+    {
+      "guest_bytes": 0,
+      "model": "RV32_ISS",
+      "peak_ws": 30707712,
+      "peak_commit": 6279168,
+      "wall_s": 0.14157409989275038,
+      "telemetry": {
+        "# instructions retired": 7,
+        "cycles": 7,
+        "execution time (ms)": 1
+      }
+    },
+    {
+      "guest_bytes": 0,
+      "model": "RV32_ISS",
+      "peak_ws": 30683136,
+      "peak_commit": 6266880,
+      "wall_s": 0.12406070018187165,
+      "telemetry": {
+        "# instructions retired": 7,
+        "cycles": 7,
+        "execution time (ms)": 1
+      }
+    },
+    {
+      "guest_bytes": 4096,
+      "model": "RV32_ISS",
+      "peak_ws": 31051776,
+      "peak_commit": 6287360,
+      "wall_s": 0.1271478000562638,
+      "telemetry": {
+        "# instructions retired": 16391,
+        "cycles": 16391,
+        "execution time (ms)": 2
+      }
+    },
+    {
+      "guest_bytes": 4096,
+      "model": "RV32_ISS",
+      "peak_ws": 31158272,
+      "peak_commit": 6340608,
+      "wall_s": 0.1254394999705255,
+      "telemetry": {
+        "# instructions retired": 16391,
+        "cycles": 16391,
+        "execution time (ms)": 2
+      }
+    },
+    {
+      "guest_bytes": 4096,
+      "model": "RV32_ISS",
+      "peak_ws": 31014912,
+      "peak_commit": 6275072,
+      "wall_s": 0.14218559977598488,
+      "telemetry": {
+        "# instructions retired": 16391,
+        "cycles": 16391,
+        "execution time (ms)": 4
+      }
+    },
+    {
+      "guest_bytes": 1048576,
+      "model": "RV32_ISS",
+      "peak_ws": 115286016,
+      "peak_commit": 109465600,
+      "wall_s": 0.711594199994579,
+      "telemetry": {
+        "# instructions retired": 4194311,
+        "cycles": 4194311,
+        "execution time (ms)": 563
+      }
+    },
+    {
+      "guest_bytes": 1048576,
+      "model": "RV32_ISS",
+      "peak_ws": 115314688,
+      "peak_commit": 109559808,
+      "wall_s": 0.7089129998348653,
+      "telemetry": {
+        "# instructions retired": 4194311,
+        "cycles": 4194311,
+        "execution time (ms)": 559
+      }
+    },
+    {
+      "guest_bytes": 1048576,
+      "model": "RV32_ISS",
+      "peak_ws": 115249152,
+      "peak_commit": 109424640,
+      "wall_s": 0.6453274001833051,
+      "telemetry": {
+        "# instructions retired": 4194311,
+        "cycles": 4194311,
+        "execution time (ms)": 519
+      }
+    },
+    {
+      "guest_bytes": 65536,
+      "model": "RV32_5S",
+      "peak_ws": 42090496,
+      "peak_commit": 18677760,
+      "wall_s": 1.6868483999278396,
+      "telemetry": {
+        "# instructions retired": 262151,
+        "cycles": 393227,
+        "execution time (ms)": 1560
+      }
+    },
+    {
+      "guest_bytes": 65536,
+      "model": "RV32_5S",
+      "peak_ws": 42188800,
+      "peak_commit": 18821120,
+      "wall_s": 1.9219623000826687,
+      "telemetry": {
+        "# instructions retired": 262151,
+        "cycles": 393227,
+        "execution time (ms)": 1781
+      }
+    },
+    {
+      "guest_bytes": 65536,
+      "model": "RV32_5S",
+      "peak_ws": 42217472,
+      "peak_commit": 18722816,
+      "wall_s": 1.8371725000906736,
+      "telemetry": {
+        "# instructions retired": 262151,
+        "cycles": 393227,
+        "execution time (ms)": 1691
+      }
+    }
+  ]
+}

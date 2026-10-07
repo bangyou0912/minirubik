@@ -1,0 +1,19 @@
+permutation: entries=5040 goal=0 max=7 unique zero; ranges, nine-move consistency, fourth-turn identity PASS
+joint A: entries=5670 goal=0 max=7 unique zero; ranges, nine-move consistency, fourth-turn identity PASS
+joint B: entries=5670 goal=2916 max=7 unique zero; ranges, nine-move consistency, fourth-turn identity PASS
+All 3674160 states: projection commutation for all nine moves, admissibility, goal equivalence PASS
+Search: 2644 states have exact length and full-cubie replay PASS
+Distance-11: 2644; basic maximum edges=639792 rank=2437047; joint maximum edges=238434 rank=2437047
+distance 0: 1 states
+distance 1: 9 states
+distance 2: 54 states
+distance 3: 321 states
+distance 4: 1847 states
+distance 5: 9992 states
+distance 6: 50136 states
+distance 7: 227536 states
+distance 8: 870072 states
+distance 9: 1887748 states
+distance 10: 623800 states
+distance 11: 2644 states
+Host CPU seconds 27.694; these are host counts, not Ripes instruction measurements

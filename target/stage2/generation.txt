@@ -1,0 +1,2 @@
+C-generated coverage: 5040 / 5670 / 5670
+tables=80640 frame=16 workspace=204 subtotal=80844 spare=50228
