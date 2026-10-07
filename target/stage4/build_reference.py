@@ -6,7 +6,7 @@ ROOT=Path(__file__).resolve().parents[2]
 DIR=ROOT/'target/stage4'
 P=argparse.ArgumentParser();P.add_argument('--vector',default='21345671111111');P.add_argument('--expect',type=int,default=-1)
 a=P.parse_args()
-if len(a.vector)!=14 or not a.vector.isdigit():raise SystemExit('Expected 14 input digits')
+if len(a.vector)!=14 or not a.vector.isascii() or not a.vector.isdigit():raise SystemExit('Expected 14 ASCII input digits')
 BUILD=DIR/'build'/a.vector;BUILD.mkdir(parents=True,exist_ok=True)
 (BUILD/'data.s').write_text('.section .rodata\n.balign 2\n.globl search_tables\nsearch_tables:\n.incbin "target/stage2/tables.bin"\n.globl input_vector\ninput_vector:\n.asciz "'+a.vector+'"\n.balign 4\n.globl expected_length\nexpected_length:\n.word '+str(a.expect)+'\n')
 CC='/usr/bin/riscv64-unknown-elf-gcc';PREFIX='/usr/bin/riscv64-unknown-elf-'

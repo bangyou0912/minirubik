@@ -1,5 +1,6 @@
 {
   "kind": "reference",
+  "native_assembly": false,
   "ripes_sha256": "bd2ddea8cd6fcf6902cda7366fe99ab6dd0c7fdbbc7efcfdb89ede20acc67f0f",
   "convention": "whole program including parser, printed moves, physical replay, terminating ecall; renderer off",
   "samples": [
@@ -9,7 +10,7 @@
       "length": 0,
       "replay_pass": 1,
       "output": "\u0000\nProgram exited with code: 0",
-      "wall_s": 0.3339092000387609,
+      "wall_s": 0.17791360011324286,
       "telemetry": {
         "# instructions retired": 791,
         "cycles": 791,
@@ -79,7 +80,7 @@
       "length": 3,
       "replay_pass": 1,
       "output": "B \u0000D2 \u0000R' \u0000\n\u0000\nProgram exited with code: 0",
-      "wall_s": 0.2598202000372112,
+      "wall_s": 0.1773250000551343,
       "telemetry": {
         "# instructions retired": 2724,
         "cycles": 2724,
@@ -149,7 +150,7 @@
       "length": 11,
       "replay_pass": 1,
       "output": "R \u0000B' \u0000D2 \u0000R' \u0000B \u0000R' \u0000B' \u0000R \u0000D2 \u0000R \u0000B \u0000\n\u0000\nProgram exited with code: 0",
-      "wall_s": 1.0507588000036776,
+      "wall_s": 0.5910100000910461,
       "telemetry": {
         "# instructions retired": 5474251,
         "cycles": 5474251,
@@ -219,7 +220,7 @@
       "length": 0,
       "replay_pass": 1,
       "output": "\u0000\nProgram exited with code: 0",
-      "wall_s": 0.3072786000557244,
+      "wall_s": 0.1800810000859201,
       "telemetry": {
         "# instructions retired": 790,
         "cycles": 965,
@@ -289,7 +290,7 @@
       "length": 3,
       "replay_pass": 1,
       "output": "B \u0000D2 \u0000R' \u0000\n\u0000\nProgram exited with code: 0",
-      "wall_s": 0.31158450013026595,
+      "wall_s": 0.18387509998865426,
       "telemetry": {
         "# instructions retired": 2723,
         "cycles": 3246,
@@ -359,7 +360,7 @@
       "length": 11,
       "replay_pass": 1,
       "output": "R \u0000B' \u0000D2 \u0000R' \u0000B \u0000R' \u0000B' \u0000R \u0000D2 \u0000R \u0000B \u0000\n\u0000\nProgram exited with code: 0",
-      "wall_s": 36.97868630010635,
+      "wall_s": 26.882795999990776,
       "telemetry": {
         "# instructions retired": 5474250,
         "cycles": 6563257,

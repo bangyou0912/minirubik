@@ -1,0 +1,83 @@
+What counts as done, for grading:
+
+Total static data, .data plus .bss plus .rodata, at or under 128 KiB.
+No distance-11 state exceeding 
+ retired instructions on RV32_ISS, with the renderer compiled out, on the Ripes build you pinned. This is the pass condition, and it is a worst case: search cost varies by more than 3x across the 2,644 distance-11 states, so one sampled state is not evidence about the rest.
+Report separately the count for the vector 21345671111111, so the figures are comparable between submissions. That number is reported, not graded against a threshold.
+Precomputation rule: transition tables and any heuristic tables may be generated on the host in C and linked in as read-only data. The search itself must execute on the target. A complete precomputed distance table over all 3,674,160 states is not accepted, whatever its packing, because it moves the work off the simulated processor; the 128 KiB budget is set to rule it out.
+
+A direction rather than a recipe: admissible heuristics, pattern databases built over abstractions of the state space, and iterative-deepening search are the established tools for this shape of problem, and the references below cover all three. Section 4 of report.md is the place to start, since it establishes that the permutation and the orientation evolve independently of one another. Which abstractions to build, how to pack them, and where to put the memory-against-time line is yours to decide and yours to defend with measurement. Ideas that sound promising and turn out not to pay are worth reporting too; a negative result you measured is worth more than a positive one you assumed.
+
+Where the gains are
+Three independent directions, each with what it is actually worth here. None of them is the design; how they combine is stage 2.
+
+Memory. The baseline's 18,405,414 bytes are not evenly spread. The BFS queue alone is 14,696,640 bytes, 79.8% of the peak, and it exists only because the search enumerates the whole space breadth-first. Give up full enumeration and it disappears outright, along with the 3,674,160-byte move-per-state table that is the other 20.0%. What remains, the 34,614 bytes of factored transition tables (automatic storage in the C baseline, .rodata once linked on the target), fits the 128 KiB budget nearly four times over. That is the point rather than the relief: the other 94 KiB is what you have to spend on heuristics, and spending it well is the design problem. Past that the reductions get smaller and more deliberate: no distance on this cube exceeds 11, so a distance fits in a nibble and any byte-per-entry table halves; and a table built over an abstraction of the state space is smaller than the state space by a factor equal to the size of the fibers the abstraction collapses, exactly so when those fibers are equal-sized, which they are for the projections this cube offers. For scale, the complete distance table packed at four bits per state is still 1,794 KiB, fourteen times the 128 KiB budget. Packing alone does not rescue enumeration.
+
+Graph structure. The Cayley graph has 3,674,160 vertices and branching factor 9, and one observation cuts the search before any heuristic does. A move of face 
+ followed by another move of face 
+ either cancels or composes to a single move, so after the first move only 6 of the 9 generators are worth trying. It is free, and it matters more than it looks: unrolling the graph into a search tree duplicates each state once per path that reaches it, so even with that pruning applied a depth-11 tree holds 653,034,700 nodes against 3,674,160 distinct states in the graph. Do not read the state count as the target. At a few hundred instructions per expanded node, visiting all 3,674,160 states would cost around 
+ retired instructions: 14 times the instruction budget above, and only a factor of 1.4 below the baseline this whole exercise exists to escape. Work the ceiling backwards from the budget instead. Two hundred instructions per node against 
+ leaves you room for roughly 
+ expansions, out of those 653,034,700 tree nodes. That is the reduction an admissible heuristic has to deliver. Other prunings suggest themselves; measure what each is worth before keeping it, since a check that looks free per child may not be.
+
+Iterative deepening restarts at each bound, beginning at 
+ rather than 0, and with branching factor 6 the final bound costs more than everything before it combined. That is why the depth distribution in report.md matters: 51.4% of states sit at distance 9 and 92.0% between 8 and 10, so a typical query runs out to bound 9 or 10, and tuning against one easy state tells you nothing.
+
+RV32I. With no multiply in the base ISA, every index computation is built from shifts and adds, and the cost is small and knowable: 
+ and 
+ are a single shift, while 
+, 
+, 
+, and 
+ each cost a shift plus one add or subtract. Larger constants decompose the same way, and a constant built from few power-of-two terms costs less than its binary expansion suggests; work out the sequence for whatever strides your layout actually needs. Strides that are powers of two cost nothing extra, and strides chosen carelessly reintroduce a multiply through the back door.
+
+Modulo 3 is the other recurring operation, and it never needs a divide. Orientation arithmetic adds two values each at most 2, so the sum is at most 4 and a single conditional subtract is exact over all nine operand pairs. Branchless it costs four instructions after the add: an arithmetic shift turns the sign of 
+ into an all-ones mask exactly when no reduction was needed, and that mask adds the modulus back. RV32I compares register against register with no branch-immediate form, but x0 is free, so the branching version tests the sign of the same 
+ and needs no constant register: two instructions when the branch is taken, three otherwise. It wins on retired instructions and loses on a pipelined model that has to flush. Measure both with --iret instead of guessing.
+
+Packing has a price as well as a benefit. Reading a nibble out of a packed table runs about seven instructions including the address arithmetic and the load, against one or two for an unpacked byte table, so halving a table costs roughly five instructions on every lookup. Whether that trade pays depends on how often you look up, which is a measurement rather than a preference.
+
+Constraints
+Use only RV32I instructions. No extensions are permitted, M included, and you may not call compiler-generated routines such as __mulsi3 or __divsi3. Where a multiply or a modulo survives, write it yourself; better, restructure so that it does not survive.
+No heap, no recursion, no floating point. There is no allocator in hand-written assembly, and Ripes' brk fails as soon as the break reaches the stack pointer, so size everything at assembly time.
+The RV32I program accepts an arbitrary cube state, supplied as a 14-character string inlined at assembly time. It will be exercised on states you have not seen.
+Include at least three test cases of your own: a solved cube, a short scramble, and a distance-11 state. Only 2,644 of 3,674,160 states are at distance 11, about 0.072%, so uniform sampling needs roughly 1,390 draws per hit; tests/solutions.txt already contains the vector 21345671111111, and you may use it. Validate results inside the program rather than inspecting output by hand.
+Avoid a mechanical, line by line translation of the C source. Your assembly is expected to beat riscv64-unknown-elf-gcc -O2 -march=rv32i -mabi=ilp32 on your own final C algorithm, measured in retired instructions and code size. Report that reference build alongside your assembly, and explain any case where your assembly does not win.
+Show the iterative refinement of your assembly, with explicit measurements at each step. Code size means bytes of linked .text with the renderer compiled out; retired instruction count means --iret on the pinned Ripes build with the same input. State both conventions in your note so the numbers are comparable across steps.
+Everything must run correctly on the Ripes simulator.
+Correctness gates
+The native C oracle enumerates the whole domain in well under a second, so gates H1 to H4 are cheap. Gate H3 is the exception: it runs your search over the entire domain and will take minutes rather than seconds. Budget for it and report its wall-clock time.
+
+On the host, against the exact BFS table:
+
+H1. Any heuristic your search uses is admissible: 
+ over all 3,674,160 states.
+H2. Every table the program depends on is fully populated, with its maximum value and its solved entry verified.
+H3. Your search returns a solution whose length equals the exact distance, for every state, not merely a solution that works.
+H4. Any packed accessor agrees with an unpacked reference at both even and odd indices.
+On the target, in Ripes:
+
+T5. Applying every returned path reaches the solved state.
+T6. The vector 21345671111111 returns an optimal 11-move solution. The diameter itself is a host result from H3; running a handful of states on the target cannot establish that none is deeper.
+T7. Your three test cases plus any state the grader supplies reproduce in RV32_ISS and in at least one visual pipeline model.
+H1 is the direct admissibility test. H3 is an independent end-to-end check: an inadmissible heuristic usually shows up there as a solver that is fast and quietly suboptimal, though in principle one could be inadmissible and still return optimal solutions throughout, which is why H1 is not optional.
+
+Visualization on the LED Matrix
+
+
+The diagram above is for illustrative purposes only. The actual design depends on the number and arrangement of LEDs in the matrix.
+
+Instantiate an LED Matrix peripheral in the I/O tab and set Width to 35 and Height to 25. Ripes lists Height above Width in that panel, so check which box you are typing into; 35 wide by 25 tall is the peripheral's own default.
+
+Drive it from your assembly. The peripheral is memory mapped, one 32-bit word per LED holding 24-bit RGB, indexed row-major as y * WIDTH + x. Address it through the assembler symbols LED_MATRIX_0_BASE, LED_MATRIX_0_WIDTH, and LED_MATRIX_0_HEIGHT rather than a literal address. The peripheral's own in-GUI description gives a column-major formula; it is wrong, and examples/C/leds.c shows the row-major layout the implementation actually uses.
+Render the cube as an unfolded net. The six faces sit in a 4 by 3 bounding box of face slots, six of the twelve occupied (one face above, four across, one below), giving an 8 by 6 bounding grid of facelets. At 4 pixels wide and 3 pixels tall per facelet this is 32 + 3 separator columns = 35 across, and 18 + 2 separator rows = 20 down, which leaves 5 rows spare inside the 25.
+Redraw after every move the solver emits, so the corner cubies are seen traveling to their home positions rather than only the final answer appearing. The six face colors must remain distinguishable throughout.
+The display must be driven by the solver's actual output. A pre-recorded animation does not satisfy this requirement.
+Ripes' CLI instantiates no I/O peripherals, so a program referencing LED_MATRIX_0_BASE will not assemble under --mode cli, and the LED-driving build therefore cannot be measured with --iret. Guard the renderer behind an assemble-time switch, for example .equ RENDER, 0 with .if RENDER, so that one source tree produces both a GUI build that animates and a CLI build that measures. State in your write-up that the two builds differ only in the renderer.
+
+Instruction-level walkthrough
+Explain both program behavior and instruction-level operation using Ripes.
+
+Visualize signals such as register write enable and multiplexer selection.
+Walk through each pipeline stage: IF, ID, EX, MEM, WB.
+Describe how memory is updated and why the result is correct.

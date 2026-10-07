@@ -88,7 +88,7 @@
           "sha256": "c4fcd50d9f0c893c46288b57d8e62b18523145956b249b6ecd6c21718be49065"
         }
       },
-      "whole_elf_sha256": "caa329c5486da5be61dbe4a929f610f3ee266111cadcb51a7c59829cb39d2d5d"
+      "whole_elf_sha256": "6bbf431c52581be1deb26d71ac67bb540f010a8d49964327267bef6d5e148e73"
     },
     {
       "kind": "asm-r0",
@@ -110,7 +110,7 @@
           "sha256": "c4fcd50d9f0c893c46288b57d8e62b18523145956b249b6ecd6c21718be49065"
         }
       },
-      "whole_elf_sha256": "5eae645648f1db8bb60d8efd56ba9bc4187246c267acf3a2f09b0d0363594766"
+      "whole_elf_sha256": "d937bf1547e4c6b6546107193f790a9c341cdb5485d97d172cde7511e65b2748"
     },
     {
       "kind": "asm-r0",
@@ -132,7 +132,7 @@
           "sha256": "c4fcd50d9f0c893c46288b57d8e62b18523145956b249b6ecd6c21718be49065"
         }
       },
-      "whole_elf_sha256": "00300cf245b1d230cdd3211b11de5ab1ad43991815e8522893935b750e451fdf"
+      "whole_elf_sha256": "50e3291de72c4afed7480547a829afeb180a6cfc9e1a70feda5c2c551f28e89f"
     },
     {
       "kind": "asm-r1",
@@ -154,7 +154,7 @@
           "sha256": "c4fcd50d9f0c893c46288b57d8e62b18523145956b249b6ecd6c21718be49065"
         }
       },
-      "whole_elf_sha256": "30d9a3448dba567593f99a5687937f935d318f057a2fe1532abcdd833ab97ed2"
+      "whole_elf_sha256": "de7aa6c3d133d7c88ae308c1cd67c68e7f8b3bebf2ba3f581fa0bd77c756b117"
     },
     {
       "kind": "asm-r1",
@@ -176,7 +176,7 @@
           "sha256": "c4fcd50d9f0c893c46288b57d8e62b18523145956b249b6ecd6c21718be49065"
         }
       },
-      "whole_elf_sha256": "608763b732297e817e9e48556be5d9edc7f3c9601fac7768a13767b3755746cc"
+      "whole_elf_sha256": "cf965ffeb8e8fc30814b75fe214da10d35e654b07358fe986a5e82d7d4aaf70e"
     },
     {
       "kind": "asm-r1",
@@ -198,7 +198,7 @@
           "sha256": "c4fcd50d9f0c893c46288b57d8e62b18523145956b249b6ecd6c21718be49065"
         }
       },
-      "whole_elf_sha256": "89c643565fa704cad0392eb6a1a01e12264fd3a201922277b6a2615e9498da64"
+      "whole_elf_sha256": "60ce3ba285b5834512f5b95bd74ea7f0872ad4590efa841d49350be19aee5838"
     },
     {
       "kind": "asm-r2",
@@ -220,7 +220,7 @@
           "sha256": "c4fcd50d9f0c893c46288b57d8e62b18523145956b249b6ecd6c21718be49065"
         }
       },
-      "whole_elf_sha256": "8a3026aebcb9790a648f88416717d73331f28a57a94b1fe6e65be171ce65b212"
+      "whole_elf_sha256": "9c6a334abc9cb201430cf3c5e05eece0c68d623af1dbd7142805343cf765cfc1"
     },
     {
       "kind": "asm-r2",
@@ -242,7 +242,7 @@
           "sha256": "c4fcd50d9f0c893c46288b57d8e62b18523145956b249b6ecd6c21718be49065"
         }
       },
-      "whole_elf_sha256": "2a9b56f14ee565a3a4d61e37fd2f8ade698f568877b50f40d457411fd65ed2f0"
+      "whole_elf_sha256": "ffddbf5cc05029451833353a7463ed15e2833e6ba4a9570ee25d44dc056cc240"
     },
     {
       "kind": "asm-r2",
@@ -264,7 +264,7 @@
           "sha256": "c4fcd50d9f0c893c46288b57d8e62b18523145956b249b6ecd6c21718be49065"
         }
       },
-      "whole_elf_sha256": "b4ba9a07c22956b924ea1c9634cfafae5b6358de66abfffd058b132b55656106"
+      "whole_elf_sha256": "62447f6bf7748d3c6e8e75fe287d8322cf99eef6307eaf437471c512ab487a22"
     }
   ]
 }

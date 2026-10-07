@@ -1,5 +1,6 @@
 {
   "kind": "asm-r2",
+  "native_assembly": false,
   "ripes_sha256": "bd2ddea8cd6fcf6902cda7366fe99ab6dd0c7fdbbc7efcfdb89ede20acc67f0f",
   "convention": "whole program including parser, printed moves, physical replay, terminating ecall; renderer off",
   "samples": [
@@ -9,7 +10,7 @@
       "length": 0,
       "replay_pass": 1,
       "output": "\u0000\nProgram exited with code: 0",
-      "wall_s": 0.309827100019902,
+      "wall_s": 0.20678740018047392,
       "telemetry": {
         "# instructions retired": 745,
         "cycles": 745,
@@ -50,6 +51,8 @@
       },
       "manifest": {
         "role": "handwritten RV32I",
+        "renderer_test": false,
+        "renderer_RAM_model": false,
         "revision": 2,
         "vector": "12345671111111",
         "expected_length": 0,
@@ -60,7 +63,7 @@
         },
         "static_bytes": 81020,
         "text_bytes": 1864,
-        "elf_sha256": "8a3026aebcb9790a648f88416717d73331f28a57a94b1fe6e65be171ce65b212"
+        "elf_sha256": "9c6a334abc9cb201430cf3c5e05eece0c68d623af1dbd7142805343cf765cfc1"
       }
     },
     {
@@ -69,7 +72,7 @@
       "length": 3,
       "replay_pass": 1,
       "output": "B \u0000D2 \u0000R' \u0000\n\u0000\nProgram exited with code: 0",
-      "wall_s": 0.29431989998556674,
+      "wall_s": 0.19427990005351603,
       "telemetry": {
         "# instructions retired": 2485,
         "cycles": 2485,
@@ -110,6 +113,8 @@
       },
       "manifest": {
         "role": "handwritten RV32I",
+        "renderer_test": false,
+        "renderer_RAM_model": false,
         "revision": 2,
         "vector": "26471352122222",
         "expected_length": 3,
@@ -120,7 +125,7 @@
         },
         "static_bytes": 81020,
         "text_bytes": 1864,
-        "elf_sha256": "2a9b56f14ee565a3a4d61e37fd2f8ade698f568877b50f40d457411fd65ed2f0"
+        "elf_sha256": "ffddbf5cc05029451833353a7463ed15e2833e6ba4a9570ee25d44dc056cc240"
       }
     },
     {
@@ -129,7 +134,7 @@
       "length": 11,
       "replay_pass": 1,
       "output": "R \u0000B' \u0000D2 \u0000R' \u0000B \u0000R' \u0000B' \u0000R \u0000D2 \u0000R \u0000B \u0000\n\u0000\nProgram exited with code: 0",
-      "wall_s": 0.7621228999923915,
+      "wall_s": 0.3953434999566525,
       "telemetry": {
         "# instructions retired": 2867160,
         "cycles": 2867160,
@@ -170,6 +175,8 @@
       },
       "manifest": {
         "role": "handwritten RV32I",
+        "renderer_test": false,
+        "renderer_RAM_model": false,
         "revision": 2,
         "vector": "21345671111111",
         "expected_length": 11,
@@ -180,7 +187,7 @@
         },
         "static_bytes": 81020,
         "text_bytes": 1864,
-        "elf_sha256": "b4ba9a07c22956b924ea1c9634cfafae5b6358de66abfffd058b132b55656106"
+        "elf_sha256": "62447f6bf7748d3c6e8e75fe287d8322cf99eef6307eaf437471c512ab487a22"
       }
     },
     {
@@ -189,7 +196,7 @@
       "length": 0,
       "replay_pass": 1,
       "output": "\u0000\nProgram exited with code: 0",
-      "wall_s": 0.33255940000526607,
+      "wall_s": 0.1800802000798285,
       "telemetry": {
         "# instructions retired": 744,
         "cycles": 1017,
@@ -230,6 +237,8 @@
       },
       "manifest": {
         "role": "handwritten RV32I",
+        "renderer_test": false,
+        "renderer_RAM_model": false,
         "revision": 2,
         "vector": "12345671111111",
         "expected_length": 0,
@@ -240,7 +249,7 @@
         },
         "static_bytes": 81020,
         "text_bytes": 1864,
-        "elf_sha256": "8a3026aebcb9790a648f88416717d73331f28a57a94b1fe6e65be171ce65b212"
+        "elf_sha256": "9c6a334abc9cb201430cf3c5e05eece0c68d623af1dbd7142805343cf765cfc1"
       }
     },
     {
@@ -249,7 +258,7 @@
       "length": 3,
       "replay_pass": 1,
       "output": "B \u0000D2 \u0000R' \u0000\n\u0000\nProgram exited with code: 0",
-      "wall_s": 0.34456219989806414,
+      "wall_s": 0.18712490005418658,
       "telemetry": {
         "# instructions retired": 2484,
         "cycles": 3287,
@@ -290,6 +299,8 @@
       },
       "manifest": {
         "role": "handwritten RV32I",
+        "renderer_test": false,
+        "renderer_RAM_model": false,
         "revision": 2,
         "vector": "26471352122222",
         "expected_length": 3,
@@ -300,7 +311,7 @@
         },
         "static_bytes": 81020,
         "text_bytes": 1864,
-        "elf_sha256": "2a9b56f14ee565a3a4d61e37fd2f8ade698f568877b50f40d457411fd65ed2f0"
+        "elf_sha256": "ffddbf5cc05029451833353a7463ed15e2833e6ba4a9570ee25d44dc056cc240"
       }
     },
     {
@@ -309,7 +320,7 @@
       "length": 11,
       "replay_pass": 1,
       "output": "R \u0000B' \u0000D2 \u0000R' \u0000B \u0000R' \u0000B' \u0000R \u0000D2 \u0000R \u0000B \u0000\n\u0000\nProgram exited with code: 0",
-      "wall_s": 23.222444700077176,
+      "wall_s": 15.500976500101388,
       "telemetry": {
         "# instructions retired": 2867159,
         "cycles": 3567142,
@@ -350,6 +361,8 @@
       },
       "manifest": {
         "role": "handwritten RV32I",
+        "renderer_test": false,
+        "renderer_RAM_model": false,
         "revision": 2,
         "vector": "21345671111111",
         "expected_length": 11,
@@ -360,7 +373,7 @@
         },
         "static_bytes": 81020,
         "text_bytes": 1864,
-        "elf_sha256": "b4ba9a07c22956b924ea1c9634cfafae5b6358de66abfffd058b132b55656106"
+        "elf_sha256": "62447f6bf7748d3c6e8e75fe287d8322cf99eef6307eaf437471c512ab487a22"
       }
     }
   ]

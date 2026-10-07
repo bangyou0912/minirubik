@@ -1,28 +1,67 @@
 {
+  "tables_sha256": "190903f699ec5a9cfb3b7a396d4a5e59477aee9059cbbb66d56ba13e35c27ee9",
+  "static_table_bytes": 80640,
   "permutation_transition": {
     "entries": 15120,
+    "expected_entries": 15120,
     "min": 0,
     "max": 5039,
-    "solved_quarter_entries": [
-      1104,
-      9,
-      198
+    "goal_indices": [
+      0
+    ],
+    "goal_quarter_turn_values": [
+      [
+        1104,
+        9,
+        198
+      ]
     ]
   },
   "joint_transition": {
     "entries": 17010,
+    "expected_entries": 17010,
     "min": 0,
     "max": 5669,
-    "A_solved_quarter_entries": [
-      2478,
+    "goal_indices": [
       0,
-      405
+      2916
     ],
-    "B_solved_quarter_entries": [
-      3471,
-      5369,
-      3024
+    "goal_quarter_turn_values": [
+      [
+        2478,
+        0,
+        405
+      ],
+      [
+        3471,
+        5369,
+        3024
+      ]
     ]
   },
-  "H4": "Not applicable: production uses byte distances and uint16 transitions, with no packed accessor."
+  "permutation_PDB": {
+    "populated": 5040,
+    "expected_entries": 5040,
+    "max": 7,
+    "goal_index": 0,
+    "goal_distance": 0,
+    "unique_zero": true
+  },
+  "joint_A_PDB": {
+    "populated": 5670,
+    "expected_entries": 5670,
+    "max": 7,
+    "goal_index": 0,
+    "goal_distance": 0,
+    "unique_zero": true
+  },
+  "joint_B_PDB": {
+    "populated": 5670,
+    "expected_entries": 5670,
+    "max": 7,
+    "goal_index": 2916,
+    "goal_distance": 0,
+    "unique_zero": true
+  },
+  "H4": "Not applicable: byte distances and uint16 transitions; no packed accessor."
 }

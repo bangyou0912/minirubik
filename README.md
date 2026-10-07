@@ -1,5 +1,45 @@
 # minirubik
 
+## RV32I Homework Submission (`hw1-redo`)
+
+Use [the submission branch](https://github.com/bangyou0912/minirubik/tree/hw1-redo),
+[the complete homework report](hw1-report.md), [gate summary](gates.md), and
+[LED / pipeline walkthrough](visualization.md). The original hosted C BFS
+solver remains documented below; the target solver uses iterative IDA* with
+small host-generated pattern databases and executes the search in RV32I.
+
+The restored `target/` includes C generators/verifiers, GCC reference and
+handwritten assembly, literal-table Ripes exports, measurement scripts, raw
+results, and measured ELF artifacts. Three tests pass in RV32_ISS and RV32_5S.
+All 2,644 hard states pass, with a worst case of 7,832,368 retired instructions.
+The specified input retires 2,867,160. Assembly text is 1,864 bytes versus GCC's
+2,184; static data is 81,020 bytes for CLI and 81,168 for the complete GUI source.
+
+`RENDER=0` compiles out both calls and all renderer code/data. Export with
+`--render` for `RENDER=1`, instantiate the real LED Matrix at Width 35 / Height
+25, then open `target/stage4/ripes/solver-gui.s`. The native CLI entry point is
+`target/stage4/ripes/solver.s`; edit only `input_vector` for arbitrary legal input.
+
+Real GUI screenshots and control-wire observation are **manual required**.
+The renderer's geometry and every test frame's pixels are simulator-verified;
+the actual five-stage CLI trace is included. The report distinguishes these
+checks from real peripheral screenshots and gives the exact capture steps.
+
+Rebuild and remeasure from the repository root:
+
+```sh
+# Ubuntu/WSL in this same checkout; see the report for dependencies/pins.
+sh target/stage4/reproduce.sh
+```
+
+```powershell
+# Windows PowerShell, same checkout; optionally set RIPES_EXE to the pinned binary.
+.\target\stage4\reproduce.ps1 -FullSweep
+```
+
+The complete report mirrors [the current HackMD note](https://hackmd.io/@33RgN2IER5mCMTtOlqQBog/BJwwuTejzx).
+
+
 An optimal C99 solver for the 2×2×2 Rubik’s Cube. It builds a breadth-first
 table for all 3,674,160 states and solves every valid position in at most 11
 half-turn-metric moves.

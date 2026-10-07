@@ -1,3 +1,11 @@
+> This document describes the hosted BFS baseline. The RV32I `hw1-redo`
+> submission is documented in [hw1-report.md](hw1-report.md), with
+> [H1–H4/T5–T7 evidence](gates.md) and [LED/control-signal steps](visualization.md).
+> The target searches with iterative IDA* instead of rebuilding the full BFS
+> table. CLI static data is 81,020 bytes; the complete hard-state sweep passes
+> at a maximum 7,832,368 retired instructions. Actual GUI screenshots remain
+> manual required.
+
 # The Mini-Rubik and Its C99 Solver
 
 This report describes the 2×2×2 Rubik’s Cube as a finite state graph and explains the design, algorithmic complexity, and formal validation of the C99 solver in `solver.c`.

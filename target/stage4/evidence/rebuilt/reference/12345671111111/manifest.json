@@ -1,0 +1,24 @@
+{
+  "role": "GCC final-C reference, not hand-written assembly",
+  "vector": "12345671111111",
+  "expected_length": 0,
+  "flags": [
+    "-O2",
+    "-std=c99",
+    "-march=rv32i",
+    "-mabi=ilp32",
+    "-ffreestanding",
+    "-fno-builtin",
+    "-fno-pic",
+    "-mno-relax",
+    "-msmall-data-limit=0"
+  ],
+  "sections": {
+    ".text": 2184,
+    ".rodata": 80784,
+    ".bss": 220
+  },
+  "static_bytes": 81004,
+  "text_bytes": 2184,
+  "elf_sha256": "04d46ccc3911d959e0ab481dfbd7ed9fdfcb198f0df0fc51554cdb1a4193d819"
+}
