@@ -141,4 +141,3 @@ Then in WSL:
 ```sh
 python3 target/stage4/summarize_pipeline.py
 ```
-

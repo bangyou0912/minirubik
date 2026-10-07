@@ -28,9 +28,3 @@ data=(R/'target/stage2/tables.bin').read_bytes()
 parts.append('.data\n.align 2\nsearch_tables:\n'+'\n'.join('.byte '+','.join(map(str,data[i:i+32])) for i in range(0,len(data),32)))
 parts.append('\ninput_vector: .asciz "'+a.vector+'"\n.align 2\nexpected_length: .word '+str(a.expect)+'\n')
 out=D/'ripes';out.mkdir(exist_ok=True);path=out/(a.output or a.vector+'.s');path.write_text('\n'.join(parts));print(path)
-
-
-
-
-
-

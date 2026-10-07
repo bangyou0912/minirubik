@@ -22,4 +22,3 @@ $(BUILD)/sanity: $(DIR)/sanity.c $(DIR)/search.c $(DIR)/joint.h solver.c | $(BUI
 sanitize: $(BUILD)/sanity
 	$(BUILD)/sanity > $(DIR)/sanitizer-verification.txt
 	cat $(DIR)/sanitizer-verification.txt
-

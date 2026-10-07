@@ -144,4 +144,3 @@ int main(int argc,char **argv) {
     printf("Host CPU seconds %.3f; these are host counts, not Ripes instruction measurements\n",(double)(clock()-started)/CLOCKS_PER_SEC);
     return 0;
 }
-

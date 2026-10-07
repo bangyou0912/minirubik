@@ -133,4 +133,3 @@ int s2_solve(const s2_tables *t,unsigned p,unsigned a,unsigned b,
         if(search_bound(t,p,a,b,bound,w,stats))return 1;
     return 0;
 }
-

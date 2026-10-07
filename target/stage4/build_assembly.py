@@ -29,6 +29,3 @@ if subprocess.check_output([prefix+'nm','-u',str(elf)],text=True).strip():raise 
 manifest={'role':'handwritten RV32I','renderer_test':a.render_test,'renderer_RAM_model':a.renderer_model,'revision':a.revision,'vector':a.vector,'expected_length':a.expect,'sections':sections,'static_bytes':static,'text_bytes':sections['.text'],'elf_sha256':hashlib.sha256(elf.read_bytes()).hexdigest()}
 (b/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n');(b/'disassembly.txt').write_text(asm)
 print(json.dumps(manifest))
-
-
-

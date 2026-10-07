@@ -19,4 +19,3 @@ int stage2_reference(unsigned p,unsigned a,unsigned b,uint8_t moves[11],uint8_t 
     if(!s2_solve(&tables,p,a,b,&workspace,&stats))return 0;
     memcpy(moves,workspace.moves,workspace.length);*length=workspace.length;*edges=stats.edges;return 1;
 }
-

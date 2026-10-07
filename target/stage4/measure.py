@@ -28,7 +28,3 @@ for model in a.models:
         row={'vector':vector,'model':model,'length':length,'replay_pass':passed,'output':r.stdout[:index].strip(),'wall_s':time.perf_counter()-started,'telemetry':data,'manifest':json.loads((b/'manifest.json').read_text())}
         results['samples'].append(row);out.write_text(json.dumps(results,indent=2)+'\n')
         print(f'{a.kind} {model} {vector}: length={length} PASS iret={data["# instructions retired"]}',flush=True)
-
-
-
-

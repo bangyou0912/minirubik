@@ -9,5 +9,3 @@ selected=[e for e in entries if e['first'] and any(e['instruction'].startswith(p
 record={'input':j['input'],'model':'RV32_5S','iret':j['telemetry']['# instructions retired'],'cycles':j['telemetry']['cycles'],'source':'Observed stage occupancy from --pipeline; no GUI wire values captured','capture_window_cycles':[min(int(c) for c in cycles if c.isdigit()),max(int(c) for c in cycles if c.isdigit())],'events':selected}
 (D/'pipeline-events.json').write_text(json.dumps(record,indent=2)+'\n')
 for e in selected:print(e['instruction']+': '+', '.join(str(v['cycle'])+' '+v['stage'] for v in e['first'][:7]))
-
-

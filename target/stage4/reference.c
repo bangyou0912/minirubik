@@ -56,5 +56,3 @@ result reference_main(void){
     for(unsigned i=0;i<7;i++)if(p[i]!=i || o[i]!=0)return failed;
     result passed={workspace.length,1};return passed;
 }
-
-

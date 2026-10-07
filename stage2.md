@@ -150,5 +150,3 @@ The host checks used WSL Ubuntu 22.04, GCC 11.4.0 and `-O3 -std=c99`. The final 
 The mathematical argument establishes shortest-path optimality, and the host operation counts support choosing the joint heuristic. They do not establish compliance with the 50-million-instruction limit.
 
 Stage 3 will refine the C implementation and compare target-relevant operation costs. Stage 4 must measure the final renderer-off RV32I program using the pinned Ripes build and `--iret`, including the specified vector and all 2,644 distance-11 states. The state with the largest host edge count is not automatically the state with the largest retired-instruction count.
-
-

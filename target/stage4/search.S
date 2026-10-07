@@ -230,5 +230,3 @@ s2_solve:
 .Linvalid:
     li a0,0
     ret
-
-

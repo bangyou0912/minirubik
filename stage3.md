@@ -180,4 +180,3 @@ make -f target/stage3/Makefile sanitize
 The raw per-input counts are in `target/stage3/operations.csv`. Aggregate results are in `target/stage3/results.json`; correctness logs are in `all-state-verification.txt` and `sanitizer-verification.txt` in the same directory.
 
 Stage 3 establishes reductions in logical table reads, comparisons, and workspace writes. It does not establish a percentage speedup or compliance with the 50-million-instruction limit. Stage 4 must translate the selected C structure and measure the actual renderer-off program with Ripes `--iret`, including all 2,644 distance-11 inputs.
-

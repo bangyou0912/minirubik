@@ -75,4 +75,3 @@ int main(void) {
         sizeof tables,sizeof(s2_frame),sizeof(s2_workspace),sizeof tables+sizeof(s2_workspace),131072-sizeof tables-sizeof(s2_workspace));
     return 0;
 }
-

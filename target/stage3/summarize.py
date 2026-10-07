@@ -50,6 +50,3 @@ if wall_file.exists():
 result['verification']['H4']='Not applicable: byte PDBs and uint16 transitions; no packed accessor in production.'
 (DIR/'results.json').write_text(json.dumps(result,indent=2)+'\n')
 print(json.dumps(result,indent=2))
-
-
-

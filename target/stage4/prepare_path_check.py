@@ -12,4 +12,3 @@ for row in rows:
     lines.append(row['vector']+' '+str(length)+' '+' '.join(tokens))
 (D/'build/printed-paths.txt').write_text('\n'.join(lines)+'\n')
 print(f'Prepared {len(lines)} recorded paths for independent host verification')
-

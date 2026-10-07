@@ -128,6 +128,3 @@ python "$stage4\test_extra.py"
 For R0/R1, build the same three inputs with `--revision 0` or `--revision 1`, then run `measure.py --kind asm-r0` or `--kind asm-r1`. Per-version records are saved separately.
 
 The LED renderer and measured five-stage trace are described in [Visualization and walkthrough](visualization.md). Renderer geometry, target pixels, and native-source syntax have passed their checks. Actual GUI LED display and wire-signal observation remain unverified because the Computer Use helper cannot initialize; they are not claimed as passed.
-
-
-

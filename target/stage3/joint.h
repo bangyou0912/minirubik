@@ -25,5 +25,3 @@ unsigned s2_heuristic(const s2_tables *t,unsigned p,unsigned a,unsigned b);
 int s2_solve(const s2_tables *t,unsigned p,unsigned a,unsigned b,
              s2_workspace *w,s2_stats *stats);
 #endif
-
-

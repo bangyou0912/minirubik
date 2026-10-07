@@ -59,7 +59,7 @@ A valid state must satisfy the following conditions:
 3. **Twist conservation:**
 
      $\sum_{i=0}^{6} o[i] \equiv 0 \pmod{3}.$
- 
+
    This determines the seventh orientation from the first six. The corner permutation itself does not have to be even.
 
 Every legal move preserves these conditions. The `source` table describes how corners change positions, while the `twist` table describes their orientation changes. Permutation and orientation evolve independently, allowing the program to use separate transition tables.
@@ -81,7 +81,7 @@ These allocations coexist during construction and total approximately **17.553 M
 
 BFS expands every state and examines nine moves per state:
 
-$3,674,160 \times 9 = 33,067,440$ edge expansions. 
+$3,674,160 \times 9 = 33,067,440$ edge expansions.
 
 Each edge advances both the permutation and orientation tables, producing **66,134,880 transition updates**, in addition to visited-state checks, move-table writes, and queue operations.
 

@@ -19,4 +19,3 @@ quick: generate $(BUILD)/verify
 check: generate $(BUILD)/verify
 	$(BUILD)/verify --all > $(DIR)/all-state-verification.txt
 	cat $(DIR)/all-state-verification.txt
-

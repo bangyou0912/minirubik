@@ -1,0 +1,33 @@
+{
+  "revalidated_date": "2026-10-07",
+  "H1": "PASS: all 3674160 states",
+  "H2": "PASS: full coverage, max 7, solved distance 0",
+  "H3": {
+    "status": "PASS",
+    "states": 3674160,
+    "wall_seconds": 246.73
+  },
+  "H4": "N/A: no packed accessor",
+  "T5": "PASS: 2644 hard + 82 supplementary inputs; 2726 independent replays",
+  "T6": "PASS: optimal length 11",
+  "T7": "PASS: three cases in RV32_ISS and RV32_5S CLI; GUI captures manual required",
+  "hard_state_sweep": {
+    "cases": 2644,
+    "maximum_iret": 7832368,
+    "specified_iret": 2867160,
+    "wall_seconds": 385.11348910001107
+  },
+  "clean_checkout": "PASS: host quick gate, all 12 execution-section rebuild comparisons, evidence and renderer audits",
+  "manual_GUI_screenshots": "REQUIRED: see visualization.md and target/stage4/screenshots/README.md",
+  "source_and_result_sha256": {
+    "target/stage2/tables.bin": "190903f699ec5a9cfb3b7a396d4a5e59477aee9059cbbb66d56ba13e35c27ee9",
+    "target/stage3/search.c": "bdbc2656f17b74854dd2eb30b7f1bcb6a270f270c248f308fc3827989378ad57",
+    "target/stage4/frontend.S": "395a797ee6daa1bb0e95438ada29d8e83f581124415da58e9623c2314cf4caa9",
+    "target/stage4/search.S": "c77ee6e67506e80e4f49780bb08547b0dabff647459a4a9152b150d69a9148cd",
+    "target/stage4/renderer.S": "bb9e2304f543135fcc11d2be2128ffb8ef8e6f61972d6e38e66a17b6c81d66f9",
+    "target/stage4/ripes/solver.s": "4a47a39ed5382362867b8a34784552457c6caad150beb15ab2feb10b959f5389",
+    "target/stage4/ripes/solver-gui.s": "f2b07e8b522b68be678f09d9422cb908a8fe7514bb1d70ae630710b86220d63c",
+    "target/stage4/asm-r2-distance11.csv": "0a73c5a712dc0a8ba5eaa2a77a8aee34107bf8a0cc56335d1c20466d7542216e"
+  },
+  "hash_convention": "Repository bytes: LF text per .gitattributes; binary files unchanged."
+}

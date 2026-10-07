@@ -15,4 +15,3 @@ for name,length in [('solved-gui.s',0),('walkthrough-gui.s',3),('solver-gui.s',1
     rows.append({'GUI_source':name,'source_sha256':hashlib.sha256(original.encode()).hexdigest(),'RAM_test_source_sha256':hashlib.sha256(path.read_bytes()).hexdigest(),'length':length,'frames':length+1,'telemetry':j})
     print(f'{name}: native assembler PASS, length={length}, frames={length+1}',flush=True)
 (D/'native-renderer-tests.json').write_text(json.dumps({'status':'PASS','device':'RAM stand-in; actual GUI peripheral not tested','ripes_sha256':pin['sha256'],'samples':rows},indent=2)+'\n')
-
