@@ -1,0 +1,1 @@
+{"cases":[{"vector":"12345671111111","distance":0},{"vector":"26471352122222","distance":3,"scramble":"R D2 B'"},{"vector":"21345671111111","distance":11}],"short_distance_verified_by":"baseline BFS"}

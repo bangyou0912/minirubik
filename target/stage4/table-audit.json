@@ -1,0 +1,28 @@
+{
+  "permutation_transition": {
+    "entries": 15120,
+    "min": 0,
+    "max": 5039,
+    "solved_quarter_entries": [
+      1104,
+      9,
+      198
+    ]
+  },
+  "joint_transition": {
+    "entries": 17010,
+    "min": 0,
+    "max": 5669,
+    "A_solved_quarter_entries": [
+      2478,
+      0,
+      405
+    ],
+    "B_solved_quarter_entries": [
+      3471,
+      5369,
+      3024
+    ]
+  },
+  "H4": "Not applicable: production uses byte distances and uint16 transitions, with no packed accessor."
+}

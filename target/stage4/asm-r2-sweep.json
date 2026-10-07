@@ -1,0 +1,42 @@
+{
+  "status": "PASS",
+  "model": "RV32_ISS",
+  "renderer": false,
+  "revision": 2,
+  "ripes_sha256": "bd2ddea8cd6fcf6902cda7366fe99ab6dd0c7fdbbc7efcfdb89ede20acc67f0f",
+  "input_list_sha256": "30e4c0bf43d9006cbc6e96f5c0c5cbc444087073c64c0f1a964c4a5d1d6ecfa5",
+  "template_sha256": "b4ba9a07c22956b924ea1c9634cfafae5b6358de66abfffd058b132b55656106",
+  "input_instantiation": "Only input_vector[15] and expected_length[4] are replaced in the linked ELF; code/tables unchanged. This is assembly-time data, no runtime input or oracle.",
+  "cases_completed": 2644,
+  "cases_expected": 2644,
+  "unique_inputs": 2644,
+  "all_replay_and_length_pass": true,
+  "ceiling": 50000000,
+  "maximum": {
+    "vector": "54721631111111",
+    "rank": "2437047",
+    "length": 11,
+    "replay_pass": 1,
+    "iret": 7832368,
+    "wall_s": 1.2080010999925435,
+    "elf_sha256": "85ef65dc45be3e798fc20066545cde0a8dabc159983a93adfdc8adb7c079594d",
+    "moves": "B2 \u0000R' \u0000B \u0000R' \u0000D' \u0000B \u0000R2 \u0000B \u0000R \u0000B \u0000D' \u0000\n\u0000\nProgram exited with code: 0"
+  },
+  "minimum_iret": 1385412,
+  "elapsed_wall_s": 385.11348910001107,
+  "workers": 4,
+  "manifest": {
+    "role": "handwritten RV32I",
+    "revision": 2,
+    "vector": "21345671111111",
+    "expected_length": 11,
+    "sections": {
+      ".text": 1864,
+      ".rodata": 80788,
+      ".bss": 232
+    },
+    "static_bytes": 81020,
+    "text_bytes": 1864,
+    "elf_sha256": "b4ba9a07c22956b924ea1c9634cfafae5b6358de66abfffd058b132b55656106"
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "kind": "asm-r2",
+  "ripes_sha256": "bd2ddea8cd6fcf6902cda7366fe99ab6dd0c7fdbbc7efcfdb89ede20acc67f0f",
+  "convention": "whole program including parser, printed moves, physical replay, terminating ecall; renderer off",
+  "samples": [
+    {
+      "vector": "54721631111111",
+      "model": "RV32_ISS",
+      "length": 11,
+      "replay_pass": 1,
+      "output": "B2 \u0000R' \u0000B \u0000R' \u0000D' \u0000B \u0000R2 \u0000B \u0000R \u0000B \u0000D' \u0000\n\u0000\nProgram exited with code: 0",
+      "wall_s": 1.4609586000442505,
+      "telemetry": {
+        "# instructions retired": 7832368,
+        "cycles": 7832368,
+        "registers": {
+          "x0": 0,
+          "x1": 4108,
+          "x10": 11,
+          "x11": 1,
+          "x12": 86984,
+          "x13": 891,
+          "x14": 86752,
+          "x15": 0,
+          "x16": 0,
+          "x17": 10,
+          "x18": 0,
+          "x19": 0,
+          "x2": 16777168,
+          "x20": 0,
+          "x21": 0,
+          "x22": 0,
+          "x23": 0,
+          "x24": 0,
+          "x25": 0,
+          "x26": 0,
+          "x27": 0,
+          "x28": 0,
+          "x29": 4294967293,
+          "x3": 0,
+          "x30": 86963,
+          "x31": 86977,
+          "x4": 0,
+          "x5": 7,
+          "x6": 7,
+          "x7": 0,
+          "x8": 0,
+          "x9": 0
+        }
+      },
+      "manifest": {
+        "role": "handwritten RV32I",
+        "revision": 2,
+        "vector": "54721631111111",
+        "expected_length": 11,
+        "sections": {
+          ".text": 1864,
+          ".rodata": 80788,
+          ".bss": 232
+        },
+        "static_bytes": 81020,
+        "text_bytes": 1864,
+        "elf_sha256": "d6a0ed51029718f5446699e7483c32597b2bd9e66e26af834fe2d78068e724b9"
+      }
+    }
+  ]
+}

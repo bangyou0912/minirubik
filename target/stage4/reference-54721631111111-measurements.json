@@ -1,0 +1,77 @@
+{
+  "kind": "reference",
+  "ripes_sha256": "bd2ddea8cd6fcf6902cda7366fe99ab6dd0c7fdbbc7efcfdb89ede20acc67f0f",
+  "convention": "whole program including parser, printed moves, physical replay, terminating ecall; renderer off",
+  "samples": [
+    {
+      "vector": "54721631111111",
+      "model": "RV32_ISS",
+      "length": 11,
+      "replay_pass": 1,
+      "output": "B2 \u0000R' \u0000B \u0000R' \u0000D' \u0000B \u0000R2 \u0000B \u0000R \u0000B \u0000D' \u0000\n\u0000\nProgram exited with code: 0",
+      "wall_s": 2.353057299973443,
+      "telemetry": {
+        "# instructions retired": 14971675,
+        "cycles": 14971675,
+        "registers": {
+          "x0": 0,
+          "x1": 4108,
+          "x10": 11,
+          "x11": 1,
+          "x12": 0,
+          "x13": 87087,
+          "x14": 1,
+          "x15": 0,
+          "x16": 16777167,
+          "x17": 10,
+          "x18": 0,
+          "x19": 0,
+          "x2": 16777216,
+          "x20": 0,
+          "x21": 0,
+          "x22": 0,
+          "x23": 0,
+          "x24": 0,
+          "x25": 0,
+          "x26": 0,
+          "x27": 0,
+          "x28": 16777167,
+          "x29": 16777159,
+          "x3": 0,
+          "x30": 2,
+          "x31": 3,
+          "x4": 0,
+          "x5": 6394,
+          "x6": 6401,
+          "x7": 11,
+          "x8": 0,
+          "x9": 0
+        }
+      },
+      "manifest": {
+        "role": "GCC final-C reference, not hand-written assembly",
+        "vector": "54721631111111",
+        "expected_length": 11,
+        "flags": [
+          "-O2",
+          "-std=c99",
+          "-march=rv32i",
+          "-mabi=ilp32",
+          "-ffreestanding",
+          "-fno-builtin",
+          "-fno-pic",
+          "-mno-relax",
+          "-msmall-data-limit=0"
+        ],
+        "sections": {
+          ".text": 2184,
+          ".rodata": 80784,
+          ".bss": 220
+        },
+        "static_bytes": 81004,
+        "text_bytes": 2184,
+        "elf_sha256": "de0fe76663566a0759fa3686c4a29a23174c507eda24b5a413e5733559dd5077"
+      }
+    }
+  ]
+}

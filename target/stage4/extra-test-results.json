@@ -1,0 +1,791 @@
+{
+  "status": "PASS",
+  "ripes_sha256": "bd2ddea8cd6fcf6902cda7366fe99ab6dd0c7fdbbc7efcfdb89ede20acc67f0f",
+  "valid": 82,
+  "invalid": 5,
+  "samples": [
+    {
+      "vector": "12345671111111",
+      "distance": 0,
+      "rank": 0,
+      "iret": 745,
+      "reported_length": 0,
+      "replay_pass": 1,
+      "output": "\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "12345671111123",
+      "distance": 10,
+      "rank": 1,
+      "iret": 1097815,
+      "reported_length": 10,
+      "replay_pass": 1,
+      "output": "R \u0000D2 \u0000B2 \u0000R' \u0000B' \u0000R \u0000B' \u0000D \u0000R' \u0000B \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "12345671111132",
+      "distance": 10,
+      "rank": 2,
+      "iret": 859256,
+      "reported_length": 10,
+      "replay_pass": 1,
+      "output": "R \u0000B \u0000R2 \u0000D2 \u0000B' \u0000R' \u0000B \u0000D' \u0000B \u0000D' \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "12345671111213",
+      "distance": 10,
+      "rank": 3,
+      "iret": 1211132,
+      "reported_length": 10,
+      "replay_pass": 1,
+      "output": "R \u0000D' \u0000B \u0000D' \u0000B' \u0000D2 \u0000R2 \u0000B \u0000R \u0000D' \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "12345671111222",
+      "distance": 8,
+      "rank": 4,
+      "iret": 87792,
+      "reported_length": 8,
+      "replay_pass": 1,
+      "output": "R' \u0000B2 \u0000R \u0000B \u0000R' \u0000B \u0000R \u0000B2 \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "12345671111333",
+      "distance": 8,
+      "rank": 8,
+      "iret": 77219,
+      "reported_length": 8,
+      "replay_pass": 1,
+      "output": "R' \u0000B \u0000R' \u0000D' \u0000B2 \u0000D \u0000R2 \u0000D' \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "12345671112122",
+      "distance": 8,
+      "rank": 10,
+      "iret": 37074,
+      "reported_length": 8,
+      "replay_pass": 1,
+      "output": "R \u0000B2 \u0000R' \u0000D2 \u0000R \u0000D \u0000B' \u0000D \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "12345671112323",
+      "distance": 6,
+      "rank": 16,
+      "iret": 5517,
+      "reported_length": 6,
+      "replay_pass": 1,
+      "output": "R2 \u0000B2 \u0000R \u0000B2 \u0000R2 \u0000B \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "12345671113232",
+      "distance": 6,
+      "rank": 23,
+      "iret": 8331,
+      "reported_length": 6,
+      "replay_pass": 1,
+      "output": "B \u0000R2 \u0000B2 \u0000R \u0000B2 \u0000R2 \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "12345671122112",
+      "distance": 9,
+      "rank": 36,
+      "iret": 193999,
+      "reported_length": 9,
+      "replay_pass": 1,
+      "output": "B \u0000R2 \u0000B \u0000R \u0000D' \u0000R \u0000B \u0000D2 \u0000B2 \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "12345671122121",
+      "distance": 9,
+      "rank": 37,
+      "iret": 102953,
+      "reported_length": 9,
+      "replay_pass": 1,
+      "output": "R \u0000D2 \u0000R \u0000D \u0000R' \u0000D \u0000R \u0000D2 \u0000R2 \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "12345671122133",
+      "distance": 7,
+      "rank": 38,
+      "iret": 10887,
+      "reported_length": 7,
+      "replay_pass": 1,
+      "output": "D' \u0000B \u0000D2 \u0000B2 \u0000D \u0000B2 \u0000D' \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "12345671122211",
+      "distance": 9,
+      "rank": 39,
+      "iret": 116702,
+      "reported_length": 9,
+      "replay_pass": 1,
+      "output": "R \u0000D2 \u0000R \u0000B \u0000D' \u0000B \u0000R \u0000B2 \u0000R2 \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "12345671122331",
+      "distance": 7,
+      "rank": 44,
+      "iret": 7610,
+      "reported_length": 7,
+      "replay_pass": 1,
+      "output": "R' \u0000D2 \u0000R \u0000D2 \u0000R2 \u0000D \u0000R' \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "12345671133122",
+      "distance": 7,
+      "rank": 73,
+      "iret": 8575,
+      "reported_length": 7,
+      "replay_pass": 1,
+      "output": "D \u0000B2 \u0000D \u0000B2 \u0000D2 \u0000B \u0000D \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "12345671223233",
+      "distance": 6,
+      "rank": 131,
+      "iret": 5586,
+      "reported_length": 6,
+      "replay_pass": 1,
+      "output": "D' \u0000B \u0000D' \u0000B \u0000D' \u0000B \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "12345672121232",
+      "distance": 11,
+      "rank": 275,
+      "iret": 2568652,
+      "reported_length": 11,
+      "replay_pass": 1,
+      "output": "R \u0000B \u0000D2 \u0000B \u0000R \u0000D' \u0000B \u0000D' \u0000B' \u0000R2 \u0000B2 \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "12345672123212",
+      "distance": 11,
+      "rank": 291,
+      "iret": 2556361,
+      "reported_length": 11,
+      "replay_pass": 1,
+      "output": "R \u0000B \u0000R' \u0000B2 \u0000D' \u0000R \u0000B2 \u0000R \u0000D' \u0000R' \u0000D2 \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "12345672321212",
+      "distance": 11,
+      "rank": 435,
+      "iret": 2406819,
+      "reported_length": 11,
+      "replay_pass": 1,
+      "output": "R \u0000B \u0000D' \u0000R2 \u0000B' \u0000R \u0000B2 \u0000R \u0000B' \u0000R' \u0000D2 \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "12354762123131",
+      "distance": 5,
+      "rank": 5393,
+      "iret": 3616,
+      "reported_length": 5,
+      "replay_pass": 1,
+      "output": "D2 \u0000R' \u0000B2 \u0000D \u0000R2 \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "12354763131212",
+      "distance": 5,
+      "rank": 5646,
+      "iret": 3609,
+      "reported_length": 5,
+      "replay_pass": 1,
+      "output": "R2 \u0000D' \u0000B2 \u0000R \u0000D2 \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "12356741111111",
+      "distance": 5,
+      "rank": 6561,
+      "iret": 3598,
+      "reported_length": 5,
+      "replay_pass": 1,
+      "output": "D2 \u0000B2 \u0000D \u0000B2 \u0000D2 \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "12356741112323",
+      "distance": 1,
+      "rank": 6577,
+      "iret": 1588,
+      "reported_length": 1,
+      "replay_pass": 1,
+      "output": "B' \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "12367451111111",
+      "distance": 1,
+      "rank": 11664,
+      "iret": 1343,
+      "reported_length": 1,
+      "replay_pass": 1,
+      "output": "B2 \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "12374561112323",
+      "distance": 1,
+      "rank": 13138,
+      "iret": 1112,
+      "reported_length": 1,
+      "replay_pass": 1,
+      "output": "B \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "12435761111111",
+      "distance": 3,
+      "rank": 18225,
+      "iret": 2598,
+      "reported_length": 3,
+      "replay_pass": 1,
+      "output": "D' \u0000B2 \u0000D \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "12435761231321",
+      "distance": 4,
+      "rank": 18367,
+      "iret": 3149,
+      "reported_length": 4,
+      "replay_pass": 1,
+      "output": "B2 \u0000D2 \u0000B \u0000D' \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "12435761312213",
+      "distance": 4,
+      "rank": 18399,
+      "iret": 3213,
+      "reported_length": 4,
+      "replay_pass": 1,
+      "output": "D \u0000B' \u0000D2 \u0000B2 \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "12436571123231",
+      "distance": 3,
+      "rank": 19004,
+      "iret": 2410,
+      "reported_length": 3,
+      "replay_pass": 1,
+      "output": "R \u0000D2 \u0000R' \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "12436572313211",
+      "distance": 4,
+      "rank": 19380,
+      "iret": 3019,
+      "reported_length": 4,
+      "replay_pass": 1,
+      "output": "R' \u0000D \u0000R2 \u0000D2 \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "12476351232113",
+      "distance": 3,
+      "rank": 33678,
+      "iret": 2608,
+      "reported_length": 3,
+      "replay_pass": 1,
+      "output": "D2 \u0000B \u0000D' \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "13462751111111",
+      "distance": 2,
+      "rank": 114453,
+      "iret": 2237,
+      "reported_length": 2,
+      "replay_pass": 1,
+      "output": "D' \u0000B2 \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "13572461122133",
+      "distance": 2,
+      "rank": 135632,
+      "iret": 2008,
+      "reported_length": 2,
+      "replay_pass": 1,
+      "output": "D' \u0000B \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "13625741112323",
+      "distance": 2,
+      "rank": 142171,
+      "iret": 2424,
+      "reported_length": 2,
+      "replay_pass": 1,
+      "output": "B' \u0000D' \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "52467313312211",
+      "distance": 9,
+      "rank": 2235045,
+      "iret": 298185,
+      "reported_length": 9,
+      "replay_pass": 1,
+      "output": "B' \u0000D \u0000B' \u0000R2 \u0000D' \u0000B \u0000D \u0000B' \u0000D' \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "17254363123322",
+      "distance": 9,
+      "rank": 448144,
+      "iret": 97761,
+      "reported_length": 9,
+      "replay_pass": 1,
+      "output": "R2 \u0000B' \u0000D' \u0000R' \u0000B2 \u0000D \u0000R2 \u0000D \u0000R \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "13257642132131",
+      "distance": 8,
+      "rank": 95807,
+      "iret": 20085,
+      "reported_length": 8,
+      "replay_pass": 1,
+      "output": "R2 \u0000D2 \u0000B2 \u0000D \u0000R2 \u0000B' \u0000R2 \u0000B' \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "35614723332113",
+      "distance": 6,
+      "rank": 1367586,
+      "iret": 4346,
+      "reported_length": 6,
+      "replay_pass": 1,
+      "output": "B \u0000R \u0000B' \u0000D2 \u0000B' \u0000R2 \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "37561422333122",
+      "distance": 9,
+      "rank": 1553977,
+      "iret": 43128,
+      "reported_length": 9,
+      "replay_pass": 1,
+      "output": "R \u0000B \u0000R \u0000B \u0000D \u0000B2 \u0000D \u0000B' \u0000D' \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "17324561313113",
+      "distance": 9,
+      "rank": 455076,
+      "iret": 176243,
+      "reported_length": 9,
+      "replay_pass": 1,
+      "output": "B2 \u0000D' \u0000B2 \u0000D \u0000B2 \u0000D \u0000R' \u0000B \u0000R \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "24315673132313",
+      "distance": 9,
+      "rank": 717891,
+      "iret": 244318,
+      "reported_length": 9,
+      "replay_pass": 1,
+      "output": "D2 \u0000B2 \u0000R \u0000D' \u0000R \u0000B \u0000D \u0000R2 \u0000B \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "32715643322321",
+      "distance": 8,
+      "rank": 1210102,
+      "iret": 28905,
+      "reported_length": 8,
+      "replay_pass": 1,
+      "output": "D' \u0000R \u0000D2 \u0000R \u0000B' \u0000D \u0000R \u0000B \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "41527362232313",
+      "distance": 7,
+      "rank": 1612941,
+      "iret": 13944,
+      "reported_length": 7,
+      "replay_pass": 1,
+      "output": "B' \u0000D2 \u0000R \u0000B \u0000R2 \u0000D \u0000B' \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "41325672331232",
+      "distance": 7,
+      "rank": 1592600,
+      "iret": 10672,
+      "reported_length": 7,
+      "replay_pass": 1,
+      "output": "B' \u0000D' \u0000B' \u0000D \u0000B' \u0000R \u0000D2 \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "67521342222122",
+      "distance": 9,
+      "rank": 3136519,
+      "iret": 125259,
+      "reported_length": 9,
+      "replay_pass": 1,
+      "output": "R2 \u0000D2 \u0000B2 \u0000D \u0000R \u0000D' \u0000R2 \u0000B' \u0000R \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "43516271113313",
+      "distance": 9,
+      "rank": 1786074,
+      "iret": 323657,
+      "reported_length": 9,
+      "replay_pass": 1,
+      "output": "D' \u0000R \u0000B2 \u0000R \u0000D' \u0000B2 \u0000R2 \u0000D' \u0000B' \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "51762432323222",
+      "distance": 9,
+      "rank": 2183809,
+      "iret": 120187,
+      "reported_length": 9,
+      "replay_pass": 1,
+      "output": "R' \u0000D \u0000R \u0000B' \u0000R \u0000D' \u0000B \u0000D' \u0000R2 \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "42163753222223",
+      "distance": 8,
+      "rank": 1672204,
+      "iret": 56738,
+      "reported_length": 8,
+      "replay_pass": 1,
+      "output": "D \u0000R2 \u0000B' \u0000R2 \u0000B' \u0000D' \u0000B' \u0000D2 \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "41756322233312",
+      "distance": 7,
+      "rank": 1657419,
+      "iret": 5399,
+      "reported_length": 7,
+      "replay_pass": 1,
+      "output": "R \u0000B2 \u0000D \u0000R2 \u0000D' \u0000R \u0000B2 \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "17642531323133",
+      "distance": 9,
+      "rank": 517070,
+      "iret": 197840,
+      "reported_length": 9,
+      "replay_pass": 1,
+      "output": "B2 \u0000D2 \u0000R \u0000D' \u0000R2 \u0000B \u0000R \u0000B \u0000D' \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "27645131212211",
+      "distance": 9,
+      "rank": 1044021,
+      "iret": 134844,
+      "reported_length": 9,
+      "replay_pass": 1,
+      "output": "R' \u0000D \u0000B2 \u0000R2 \u0000D \u0000R' \u0000B \u0000R' \u0000D2 \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "32541762323321",
+      "distance": 6,
+      "rank": 1177792,
+      "iret": 5040,
+      "reported_length": 6,
+      "replay_pass": 1,
+      "output": "B2 \u0000D2 \u0000B \u0000R' \u0000D' \u0000R2 \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "42537611232221",
+      "distance": 9,
+      "rank": 1705279,
+      "iret": 114013,
+      "reported_length": 9,
+      "replay_pass": 1,
+      "output": "B \u0000R' \u0000B2 \u0000R' \u0000D \u0000R \u0000D2 \u0000B' \u0000R2 \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "52174361222123",
+      "distance": 10,
+      "rank": 2201698,
+      "iret": 357693,
+      "reported_length": 10,
+      "replay_pass": 1,
+      "output": "R \u0000D2 \u0000B' \u0000D2 \u0000R \u0000B \u0000D' \u0000B2 \u0000D' \u0000B' \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "61574321111132",
+      "distance": 9,
+      "rank": 2693657,
+      "iret": 156310,
+      "reported_length": 9,
+      "replay_pass": 1,
+      "output": "B2 \u0000R2 \u0000D' \u0000B \u0000D' \u0000B \u0000R \u0000D' \u0000R2 \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "17634521322233",
+      "distance": 9,
+      "rank": 514148,
+      "iret": 123102,
+      "reported_length": 9,
+      "replay_pass": 1,
+      "output": "R' \u0000D2 \u0000R' \u0000D \u0000B2 \u0000D \u0000B2 \u0000R \u0000D' \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "73415622311213",
+      "distance": 8,
+      "rank": 3361827,
+      "iret": 32461,
+      "reported_length": 8,
+      "replay_pass": 1,
+      "output": "B2 \u0000R2 \u0000B' \u0000R \u0000B2 \u0000D' \u0000R \u0000B2 \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "23567413212233",
+      "distance": 10,
+      "rank": 660326,
+      "iret": 477805,
+      "reported_length": 10,
+      "replay_pass": 1,
+      "output": "R2 \u0000B2 \u0000R' \u0000B \u0000D \u0000B2 \u0000D \u0000R2 \u0000D' \u0000R2 \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "41562733223222",
+      "distance": 9,
+      "rank": 1619725,
+      "iret": 136596,
+      "reported_length": 9,
+      "replay_pass": 1,
+      "output": "B \u0000D2 \u0000R2 \u0000B' \u0000R \u0000D2 \u0000B2 \u0000R2 \u0000D' \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "64315722221312",
+      "distance": 9,
+      "rank": 2924376,
+      "iret": 169836,
+      "reported_length": 9,
+      "replay_pass": 1,
+      "output": "B \u0000D2 \u0000R \u0000B \u0000D2 \u0000R' \u0000D \u0000B \u0000R2 \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "41675232111311",
+      "distance": 8,
+      "rank": 1643415,
+      "iret": 48675,
+      "reported_length": 8,
+      "replay_pass": 1,
+      "output": "D \u0000B' \u0000D2 \u0000B' \u0000D2 \u0000R' \u0000B \u0000R2 \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "27134653211132",
+      "distance": 7,
+      "rank": 963578,
+      "iret": 7195,
+      "reported_length": 7,
+      "replay_pass": 1,
+      "output": "B \u0000R2 \u0000B2 \u0000R' \u0000B' \u0000D2 \u0000R2 \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "13527642332333",
+      "distance": 9,
+      "rank": 126593,
+      "iret": 64449,
+      "reported_length": 9,
+      "replay_pass": 1,
+      "output": "R2 \u0000B \u0000R' \u0000D \u0000R' \u0000B2 \u0000R \u0000D' \u0000B2 \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "57163242133232",
+      "distance": 9,
+      "rank": 2551820,
+      "iret": 262060,
+      "reported_length": 9,
+      "replay_pass": 1,
+      "output": "D \u0000B' \u0000R2 \u0000D \u0000B2 \u0000D2 \u0000B \u0000R \u0000B2 \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "26135742222332",
+      "distance": 8,
+      "rank": 877355,
+      "iret": 30333,
+      "reported_length": 8,
+      "replay_pass": 1,
+      "output": "B \u0000R \u0000D' \u0000B \u0000R2 \u0000B \u0000D2 \u0000B2 \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "72164351113112",
+      "distance": 10,
+      "rank": 3251358,
+      "iret": 396897,
+      "reported_length": 10,
+      "replay_pass": 1,
+      "output": "R \u0000B2 \u0000R' \u0000D \u0000B2 \u0000D2 \u0000R' \u0000B \u0000D' \u0000R \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "26315473123331",
+      "distance": 10,
+      "rank": 894293,
+      "iret": 344385,
+      "reported_length": 10,
+      "replay_pass": 1,
+      "output": "R \u0000B \u0000R' \u0000D' \u0000R2 \u0000D' \u0000R \u0000B2 \u0000D' \u0000B2 \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "53742613132223",
+      "distance": 8,
+      "rank": 2355952,
+      "iret": 30958,
+      "reported_length": 8,
+      "replay_pass": 1,
+      "output": "B \u0000D2 \u0000R' \u0000B2 \u0000R' \u0000B' \u0000R' \u0000D' \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "17563241233133",
+      "distance": 6,
+      "rank": 504623,
+      "iret": 4231,
+      "reported_length": 6,
+      "replay_pass": 1,
+      "output": "R \u0000D \u0000R' \u0000D2 \u0000B' \u0000D2 \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "13624751211332",
+      "distance": 10,
+      "rank": 140786,
+      "iret": 415176,
+      "reported_length": 10,
+      "replay_pass": 1,
+      "output": "R \u0000D' \u0000R2 \u0000D' \u0000R \u0000D \u0000B \u0000R2 \u0000D2 \u0000R' \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "15634723323212",
+      "distance": 9,
+      "rank": 322185,
+      "iret": 156974,
+      "reported_length": 9,
+      "replay_pass": 1,
+      "output": "B2 \u0000R' \u0000B \u0000D \u0000B \u0000D \u0000R' \u0000D \u0000B2 \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "13765241323322",
+      "distance": 8,
+      "rank": 173716,
+      "iret": 35072,
+      "reported_length": 8,
+      "replay_pass": 1,
+      "output": "D' \u0000B' \u0000R \u0000D2 \u0000B' \u0000D \u0000B \u0000R2 \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "42765311131313",
+      "distance": 10,
+      "rank": 1748931,
+      "iret": 470992,
+      "reported_length": 10,
+      "replay_pass": 1,
+      "output": "R \u0000D2 \u0000B' \u0000D' \u0000B2 \u0000R \u0000D' \u0000R' \u0000D \u0000R' \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "25376143233122",
+      "distance": 9,
+      "rank": 821494,
+      "iret": 91192,
+      "reported_length": 9,
+      "replay_pass": 1,
+      "output": "R' \u0000B' \u0000R' \u0000B \u0000D \u0000R' \u0000D2 \u0000B \u0000R' \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "62453171232323",
+      "distance": 9,
+      "rank": 2757229,
+      "iret": 139920,
+      "reported_length": 9,
+      "replay_pass": 1,
+      "output": "R' \u0000D2 \u0000B2 \u0000D' \u0000R \u0000D' \u0000B \u0000R2 \u0000B2 \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "57426312132212",
+      "distance": 8,
+      "rank": 2597736,
+      "iret": 24558,
+      "reported_length": 8,
+      "replay_pass": 1,
+      "output": "B \u0000R \u0000B2 \u0000D \u0000R' \u0000D \u0000B2 \u0000D \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "62341572112232",
+      "distance": 9,
+      "rank": 2734007,
+      "iret": 345636,
+      "reported_length": 9,
+      "replay_pass": 1,
+      "output": "D' \u0000B \u0000D' \u0000R' \u0000D2 \u0000B \u0000D' \u0000R' \u0000D \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "42561373212311",
+      "distance": 9,
+      "rank": 1706442,
+      "iret": 250344,
+      "reported_length": 9,
+      "replay_pass": 1,
+      "output": "D' \u0000R2 \u0000B \u0000R' \u0000B \u0000R' \u0000D2 \u0000R \u0000B2 \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "15743622123131",
+      "distance": 10,
+      "rank": 343649,
+      "iret": 380556,
+      "reported_length": 10,
+      "replay_pass": 1,
+      "output": "R \u0000D2 \u0000R \u0000D \u0000B \u0000R2 \u0000B \u0000D2 \u0000B' \u0000D \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "15246373323323",
+      "distance": 10,
+      "rank": 268972,
+      "iret": 529006,
+      "reported_length": 10,
+      "replay_pass": 1,
+      "output": "R \u0000B' \u0000R2 \u0000D2 \u0000R' \u0000B2 \u0000R \u0000D \u0000B' \u0000D \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "12734561222312",
+      "distance": 9,
+      "rank": 70107,
+      "iret": 233583,
+      "reported_length": 9,
+      "replay_pass": 1,
+      "output": "D \u0000B2 \u0000D \u0000B' \u0000R \u0000D2 \u0000R' \u0000B2 \u0000D \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "72361453323323",
+      "distance": 10,
+      "rank": 3268078,
+      "iret": 289575,
+      "reported_length": 10,
+      "replay_pass": 1,
+      "output": "R \u0000B' \u0000D2 \u0000R \u0000D' \u0000B \u0000R2 \u0000B2 \u0000R \u0000B \u0000\n\u0000\nProgram exited with code: 0"
+    },
+    {
+      "vector": "11345671111111",
+      "distance": -1,
+      "invalid": true,
+      "iret": 58,
+      "reported_length": 4294967295,
+      "replay_pass": 0,
+      "output": "Program exited with code: 0"
+    },
+    {
+      "vector": "82345671111111",
+      "distance": -1,
+      "invalid": true,
+      "iret": 41,
+      "reported_length": 4294967295,
+      "replay_pass": 0,
+      "output": "Program exited with code: 0"
+    },
+    {
+      "vector": "12345674111111",
+      "distance": -1,
+      "invalid": true,
+      "iret": 135,
+      "reported_length": 4294967295,
+      "replay_pass": 0,
+      "output": "Program exited with code: 0"
+    },
+    {
+      "vector": "12345672111111",
+      "distance": -1,
+      "invalid": true,
+      "iret": 199,
+      "reported_length": 4294967295,
+      "replay_pass": 0,
+      "output": "Program exited with code: 0"
+    },
+    {
+      "vector": "02345671111111",
+      "distance": -1,
+      "invalid": true,
+      "iret": 41,
+      "reported_length": 4294967295,
+      "replay_pass": 0,
+      "output": "Program exited with code: 0"
+    }
+  ]
+}

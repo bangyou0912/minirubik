@@ -1,0 +1,128 @@
+{
+  "kind": "asm-r2",
+  "native_assembly": false,
+  "ripes_sha256": "bd2ddea8cd6fcf6902cda7366fe99ab6dd0c7fdbbc7efcfdb89ede20acc67f0f",
+  "convention": "whole program including parser, printed moves, physical replay, terminating ecall; renderer off",
+  "samples": [
+    {
+      "vector": "76543211111111",
+      "model": "RV32_ISS",
+      "length": 11,
+      "replay_pass": 1,
+      "output": "R2 \u0000D' \u0000R \u0000B \u0000R \u0000B2 \u0000R \u0000D' \u0000B' \u0000R \u0000B' \u0000\n\u0000\nProgram exited with code: 0",
+      "wall_s": 0.6467730000149459,
+      "telemetry": {
+        "# instructions retired": 4307089,
+        "cycles": 4307089,
+        "registers": {
+          "x0": 0,
+          "x1": 4108,
+          "x10": 11,
+          "x11": 1,
+          "x12": 86984,
+          "x13": 2727,
+          "x14": 86752,
+          "x15": 0,
+          "x16": 0,
+          "x17": 10,
+          "x18": 0,
+          "x19": 0,
+          "x2": 16777168,
+          "x20": 0,
+          "x21": 0,
+          "x22": 0,
+          "x23": 0,
+          "x24": 0,
+          "x25": 0,
+          "x26": 0,
+          "x27": 0,
+          "x28": 0,
+          "x29": 0,
+          "x3": 0,
+          "x30": 86963,
+          "x31": 86977,
+          "x4": 0,
+          "x5": 7,
+          "x6": 7,
+          "x7": 0,
+          "x8": 0,
+          "x9": 0
+        }
+      },
+      "manifest": {
+        "role": "handwritten RV32I",
+        "revision": 2,
+        "vector": "76543211111111",
+        "expected_length": -1,
+        "sections": {
+          ".text": 1864,
+          ".rodata": 80788,
+          ".bss": 232
+        },
+        "static_bytes": 81020,
+        "text_bytes": 1864,
+        "elf_sha256": "40b0746f5fa8f12101c95e40a409a94871833b7d126e6d4d6664b85894bb151e"
+      }
+    },
+    {
+      "vector": "76543211111111",
+      "model": "RV32_5S",
+      "length": 11,
+      "replay_pass": 1,
+      "output": "R2 \u0000D' \u0000R \u0000B \u0000R \u0000B2 \u0000R \u0000D' \u0000B' \u0000R \u0000B' \u0000\n\u0000\nProgram exited with code: 0",
+      "wall_s": 23.437424800125882,
+      "telemetry": {
+        "# instructions retired": 4307088,
+        "cycles": 5358403,
+        "registers": {
+          "x0": 0,
+          "x1": 4108,
+          "x10": 11,
+          "x11": 1,
+          "x12": 86984,
+          "x13": 2727,
+          "x14": 86752,
+          "x15": 0,
+          "x16": 0,
+          "x17": 10,
+          "x18": 0,
+          "x19": 0,
+          "x2": 16777216,
+          "x20": 0,
+          "x21": 0,
+          "x22": 0,
+          "x23": 0,
+          "x24": 0,
+          "x25": 0,
+          "x26": 0,
+          "x27": 0,
+          "x28": 0,
+          "x29": 0,
+          "x3": 0,
+          "x30": 86963,
+          "x31": 86977,
+          "x4": 0,
+          "x5": 7,
+          "x6": 7,
+          "x7": 0,
+          "x8": 0,
+          "x9": 0
+        }
+      },
+      "manifest": {
+        "role": "handwritten RV32I",
+        "revision": 2,
+        "vector": "76543211111111",
+        "expected_length": -1,
+        "sections": {
+          ".text": 1864,
+          ".rodata": 80788,
+          ".bss": 232
+        },
+        "static_bytes": 81020,
+        "text_bytes": 1864,
+        "elf_sha256": "40b0746f5fa8f12101c95e40a409a94871833b7d126e6d4d6664b85894bb151e"
+      }
+    }
+  ]
+}

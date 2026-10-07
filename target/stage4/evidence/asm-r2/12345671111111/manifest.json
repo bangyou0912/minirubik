@@ -1,0 +1,16 @@
+{
+  "role": "handwritten RV32I",
+  "renderer_test": false,
+  "renderer_RAM_model": false,
+  "revision": 2,
+  "vector": "12345671111111",
+  "expected_length": 0,
+  "sections": {
+    ".text": 1864,
+    ".rodata": 80788,
+    ".bss": 232
+  },
+  "static_bytes": 81020,
+  "text_bytes": 1864,
+  "elf_sha256": "8a3026aebcb9790a648f88416717d73331f28a57a94b1fe6e65be171ce65b212"
+}
