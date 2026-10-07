@@ -1,0 +1,1 @@
+PASS: ASan+UBSan, all 8 solution vectors, a three-move scramble, and the maximum-edge distance-11 state; production counters disabled.

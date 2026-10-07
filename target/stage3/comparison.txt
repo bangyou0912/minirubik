@@ -1,0 +1,9 @@
+All 2644 distance-11 states and solved state: all eight variants match original Stage 2 edges, lengths, and exact move sequences.
+baseline edges=191546980 pdb_reads=574699560 frames=191563876 path_writes=191546980 pruned=159629656 max_comparisons=383133040 threshold_comparisons=191563876
+delayed edges=191546980 pdb_reads=574648872 frames=31931576 path_writes=31917324 pruned=159629656 max_comparisons=383099248 threshold_comparisons=191546980
+PAB edges=191546980 pdb_reads=329846059 frames=31931576 path_writes=31917324 pruned=159629656 max_comparisons=5288 threshold_comparisons=329838127
+PBA edges=191546980 pdb_reads=335184028 frames=31931576 path_writes=31917324 pruned=159629656 max_comparisons=5288 threshold_comparisons=335176096
+APB edges=191546980 pdb_reads=318314654 frames=31931576 path_writes=31917324 pruned=159629656 max_comparisons=5288 threshold_comparisons=318306722
+ABP edges=191546980 pdb_reads=317244628 frames=31931576 path_writes=31917324 pruned=159629656 max_comparisons=5288 threshold_comparisons=317236696
+BPA edges=191546980 pdb_reads=333669221 frames=31931576 path_writes=31917324 pruned=159629656 max_comparisons=5288 threshold_comparisons=333661289
+BAP edges=191546980 pdb_reads=327261226 frames=31931576 path_writes=31917324 pruned=159629656 max_comparisons=5288 threshold_comparisons=327253294

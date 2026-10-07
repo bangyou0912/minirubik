@@ -1,0 +1,10 @@
+progress 500000/3674160
+progress 1000000/3674160
+progress 1500000/3674160
+progress 2000000/3674160
+progress 2500000/3674160
+progress 3000000/3674160
+progress 3500000/3674160
+PASS: all 3674160 states return exact BFS length and solve the full cubie model; all 2644 distance-11 states included.
+PASS: workspace guards, move ranges, consecutive-face pruning, invalid coordinate ranges.
+Production ABP build: diagnostic counters compiled out. Host CPU seconds 246.643.

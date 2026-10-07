@@ -1,0 +1,115 @@
+{
+  "scope": "2644 distance-11 states, all IDA* bounds; host logical operations, not retired instructions",
+  "selected": "ABP: joint A, joint B, permutation",
+  "baseline": {
+    "edges": 191546980,
+    "transition_reads": 574640940,
+    "frame_initializations": 191563876,
+    "path_writes": 191546980,
+    "max_comparisons": 383133040,
+    "threshold_comparisons": 191563876,
+    "pruned": 159629656,
+    "pdb_reads": 574699560
+  },
+  "selected_counts": {
+    "edges": 191546980,
+    "transition_reads": 574640940,
+    "frame_initializations": 31931576,
+    "path_writes": 31917324,
+    "max_comparisons": 5288,
+    "threshold_comparisons": 317236696,
+    "pruned": 159629656,
+    "pdb_reads": 317244628
+  },
+  "reductions_percent": {
+    "pdb_reads": 44.798178025401654,
+    "frame_initializations": 83.33110779195134,
+    "path_writes": 83.337077932526
+  },
+  "cases": {
+    "21345671111111": {
+      "baseline": {
+        "edges": 87021,
+        "transition_reads": 261063,
+        "frame_initializations": 87026,
+        "path_writes": 87021,
+        "max_comparisons": 174054,
+        "threshold_comparisons": 87026,
+        "pruned": 72517,
+        "pdb_reads": 261081
+      },
+      "delayed": {
+        "edges": 87021,
+        "transition_reads": 261063,
+        "frame_initializations": 14508,
+        "path_writes": 14504,
+        "max_comparisons": 174044,
+        "threshold_comparisons": 87021,
+        "pruned": 72517,
+        "pdb_reads": 261066
+      },
+      "ABP": {
+        "edges": 87021,
+        "transition_reads": 261063,
+        "frame_initializations": 14508,
+        "path_writes": 14504,
+        "max_comparisons": 2,
+        "threshold_comparisons": 145407,
+        "pruned": 72517,
+        "pdb_reads": 145410
+      }
+    },
+    "54721631111111": {
+      "baseline": {
+        "edges": 238434,
+        "transition_reads": 715302,
+        "frame_initializations": 238440,
+        "path_writes": 238434,
+        "max_comparisons": 476882,
+        "threshold_comparisons": 238440,
+        "pruned": 198697,
+        "pdb_reads": 715323
+      },
+      "delayed": {
+        "edges": 238434,
+        "transition_reads": 715302,
+        "frame_initializations": 39742,
+        "path_writes": 39737,
+        "max_comparisons": 476870,
+        "threshold_comparisons": 238434,
+        "pruned": 198697,
+        "pdb_reads": 715305
+      },
+      "ABP": {
+        "edges": 238434,
+        "transition_reads": 715302,
+        "frame_initializations": 39742,
+        "path_writes": 39737,
+        "max_comparisons": 2,
+        "threshold_comparisons": 393700,
+        "pruned": 198697,
+        "pdb_reads": 393703
+      }
+    }
+  },
+  "target_data_bytes": 80844,
+  "target_instruction_budget_status": "pending Stage 4 measurements",
+  "compiler": "riscv64-unknown-elf-gcc () 10.2.0",
+  "rv32i_audit": {
+    "multiply_divide_opcodes": 0,
+    "multiply_divide_helpers": 0,
+    "production_counter_accesses": 0,
+    "row_pointer_result": "Compiler still synthesizes non-power-of-two face strides with shifts/adds; no addressing-speed claim."
+  },
+  "verification": {
+    "all_state_search_passed": true,
+    "all_state_log": "target/stage3/all-state-verification.txt",
+    "sanitizers_passed": true,
+    "sanitizer_log": "target/stage3/sanitizer-verification.txt",
+    "path_and_edge_equivalence": "Eight counted variants match original Stage 2 for all 2644 distance-11 states and solved state.",
+    "H3_wall_seconds": 285.33,
+    "H3_user_seconds": 285.25,
+    "H3_system_seconds": 0.06,
+    "H4": "Not applicable: byte PDBs and uint16 transitions; no packed accessor in production."
+  }
+}
